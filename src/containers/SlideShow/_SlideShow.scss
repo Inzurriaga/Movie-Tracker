@@ -1,5 +1,39 @@
-.slide-image {
-    background-size: contain;
-    width: 500px;
-    height: 250px;
+.slideshow-section {
+    width: 800px;
+    height: 400px;
+
+    div {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        button {
+            position: absolute;
+            z-index: 1;
+            top: 50%;
+            &:first-of-type {
+                right: 0px;
+                height: 50px;
+            }
+            &:last-of-type {
+                left: 0px;
+                height: 50px;
+            }
+        }
+    }
+    
+    .slide-image {
+        position: absolute;
+        background-size: cover;
+        width: 800px;
+        height: 400px;
+        h3 {
+            color: white;
+            text-align: center;
+            vertical-align: sub;
+        }
+    }
+    
+    .slide {
+        
+    }
 }

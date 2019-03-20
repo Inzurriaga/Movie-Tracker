@@ -7,33 +7,78 @@ class SlideShow extends Component{
     constructor(){
         super();
         this.state = {
-            slides: []
+            slides: [],
+            slidesPosition: 0,
+            autoSlides: () => {}
         }
     }
+
     componentDidMount = () => {
         const slides = this.props.movies.filter((movie, index) => {
             return index < 4
         })
-        this.setState({slides})
+        const autoSlides = setInterval(this.changeSlidesPositionForward, 6000)
+        this.setState({slides, autoSlides})
     }
+    
+    changeSlidesPositionForward = () => {
+        const { slidesPosition, slides } = this.state
+        const autoSlides = setInterval(this.changeSlidesPositionForward, 6000)
+        let position = slidesPosition
+        if(position < slides.length - 1){
+            position++
+            clearInterval(this.state.autoSlides)
+            this.setState({ slidesPosition: position, autoSlides })
+        }else{
+            clearInterval(this.state.autoSlides)
+            this.setState({ slidesPosition: 0, autoSlides})
+        }
+    }
+
+    changeSlidesPositionBack = () => {
+        const { slidesPosition } = this.state
+        const autoSlides = setInterval(this.changeSlidesPositionForward, 6000)
+        let position = slidesPosition
+        if( slidesPosition === 0 ){
+            clearInterval(this.state.autoSlides)
+            this.setState({ slidesPosition: 3, autoSlides})
+        }else{
+            position--
+            clearInterval(this.state.autoSlides)
+            this.setState({ slidesPosition: position, autoSlides })
+        }
+    }
+
     render = () => {
-        const slideDisplay = this.state.slides.map(slide => {
+        const slideDisplay = this.state.slides.map((slide, index) => {
             let backgroundImage = {backgroundImage: `url( http://image.tmdb.org/t/p/original${slide.backdrop_path})`}
-            return (
-                <Link key={slide.id} to={`/movies/${slide.id}`}>
-                    <div className="slide-image" style={backgroundImage}>
-                        <h3>{slide.title}</h3>
-                    </div>
-                </Link>
-                )
+            if(index === this.state.slidesPosition) {
+                return (
+                    <Link className="slide" key={slide.id} to={`/movies/${slide.id}`}>
+                        <div className="slide-image" style={backgroundImage}>
+                            <h3>{slide.title}</h3>
+                        </div>
+                    </Link>
+                    )
+            }else{
+                return null;
+            }
         })
         return(
-            <div>
-                {
-                    slideDisplay
-                }
+            <div className="slideshow-section">
+                <div>
+                    {
+                        slideDisplay
+                    } 
+                    <button onClick={this.changeSlidesPositionForward}>forward</button>
+                    <button onClick={this.changeSlidesPositionBack}>back</button>
+                </div>
             </div>
         )
+    }
+
+    componentWillUnmount(){
+        clearInterval(this.state.autoSlides)
     }
 }
 
