@@ -6,4 +6,10 @@
 @import './components/Header/Header';
 @import './containers/MainPage/MainPage';
 @import './containers/SlideShow/SlideShow';
+@import './containers/MovieInfo/MovieInfo';
 @import './components/Footer/Footer';
+
+
+body {
+  background: #231f20;
+}
