@@ -28,28 +28,13 @@ class MainPage extends Component {
 
   render() {
     const { movies } = this.props;
-
-    const movieResults = movies.map(movie => {
-      return (
-        <div key={movie.id}>
-          <h2>{movie.title}</h2>
-          <p>{movie.overview}</p>
-          <img src={`http://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt="movie" />
-          <img src={`http://image.tmdb.org/t/p/original/${movie.poster_path}`} alt="movie" />
-        </div>
-      )
-    })
-
-    console.log('movies', movies);
-
     return (
       <div className="MainPage">
         {
-          this.props.movies.length ?
+          movies.length ?
           <SlideShow /> : 
           <div>im loading</div>
         }
-        {movieResults}
       </div>
     );
   }

@@ -19,11 +19,13 @@ class SlideShow extends Component{
     render = () => {
         const slideDisplay = this.state.slides.map(slide => {
             let backgroundImage = {backgroundImage: `url( http://image.tmdb.org/t/p/original${slide.backdrop_path})`}
-            return (<Link to={`/movies/${slide.id}`}>
-                <div className="slide-image" style={backgroundImage}>
-                    <h3>{slide.title}</h3>
-                </div>
-            </Link>)
+            return (
+                <Link key={slide.id} to={`/movies/${slide.id}`}>
+                    <div className="slide-image" style={backgroundImage}>
+                        <h3>{slide.title}</h3>
+                    </div>
+                </Link>
+                )
         })
         return(
             <div>
