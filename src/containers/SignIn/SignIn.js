@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { postFetch } from '../../api'
 
 
 class SignIn extends Component {
@@ -6,14 +7,34 @@ class SignIn extends Component {
     super()
     this.state = {
       name: '',
+      email: '',
       password: '',
       email: ''
     }
   }
 
-  handleLogin = (event) => {
+  handleLogin = async (url, body) => {
+    try {
+      const response = await postFetch(url, 'POST', body);
+      console.log(response);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  signIn = (event) => {
     event.preventDefault();
-    console.log('in login');
+    const { password, email } = this.state
+    const url = 'users'
+    this.handleLogin(url, { password, email })
+  }
+
+
+  createAccount = (event) => {
+    event.preventDefault();
+    const { name, password, email } = this.state
+    const url = 'users/new'
+    this.handleLogin(url, { name, password, email })
   }
 
   userInput = (event) => {
@@ -25,14 +46,25 @@ class SignIn extends Component {
   }
 
   render(){
+
     return (
       <div className="SignIn">
-        <form onSubmit={this.handleLogin}>
-          <label>Sign In</label>
+        <form onSubmit={this.createAccount}>
+          <label>Name</label>
           <input onChange={this.userInput} type="text" className="name"/>
-          <label> password</label>
+          <label>Email</label>
+          <input onChange={this.userInput} type="text" className="email"/>
+          <label>Password</label>
           <input onChange={this.userInput} type="text" className="password"/>
-          <button type="submit">Submit</button>
+          <button type="submit">Create Account</button>
+        </form>
+        <br/><br/><br/><br/>
+        <form onSubmit={this.signIn}>
+          <label>Email</label>
+          <input onChange={this.userInput} type="text" className="email"/>
+          <label>Password</label>
+          <input onChange={this.userInput} type="text" className="password"/>
+          <button type="submit">Sign In</button>
         </form>
       </div>
     )
