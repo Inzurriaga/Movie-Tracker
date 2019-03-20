@@ -20,7 +20,7 @@ class SlideShow extends Component{
         const autoSlides = setInterval(this.changeSlidesPositionForward, 6000)
         this.setState({slides, autoSlides})
     }
-    
+
     changeSlidesPositionForward = () => {
         const { slidesPosition, slides } = this.state
         const autoSlides = setInterval(this.changeSlidesPositionForward, 6000)
@@ -67,9 +67,7 @@ class SlideShow extends Component{
         return(
             <div className="slideshow-section">
                 <div>
-                    {
-                        slideDisplay
-                    } 
+                    {slideDisplay}
                     <button onClick={this.changeSlidesPositionForward}>forward</button>
                     <button onClick={this.changeSlidesPositionBack}>back</button>
                 </div>
@@ -87,4 +85,3 @@ export const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps)(SlideShow)
-
