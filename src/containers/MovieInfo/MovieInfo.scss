@@ -81,7 +81,17 @@ $font-copy: 'Lato', sans-serif;
         letter-spacing: .03em;
       }
     }
+    .MovieInfo-Trailer {
+      z-index: 10;
+
+      iframe {
+        width: 100%;
+      }
+    }
+
   }
+
+
 
 
 }
