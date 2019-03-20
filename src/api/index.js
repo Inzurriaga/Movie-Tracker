@@ -1,9 +1,8 @@
 import { apiKey } from './apiKey'
 
-export const fetchMovies = async (type, url) => {
+export const fetchMovies = async (url, type) => {
   let movieUrl = `${url}${apiKey}`;
-  try {
     const response = await fetch(movieUrl);
-    const
-  }
+    const movies = await response.json()
+    return movies
 }
