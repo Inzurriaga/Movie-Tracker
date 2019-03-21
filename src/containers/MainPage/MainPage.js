@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { fetchMovies } from "../../api/index";
 import { connect } from 'react-redux';
-import { getMovies } from '../../actions';
 import SlideShow from "../SlideShow/SlideShow";
 
 
