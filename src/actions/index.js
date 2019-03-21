@@ -4,7 +4,12 @@ export const getMovies = (movies) => ({
   movies
 });
 
-export const addUser = (userInfo) => ({
-  type: "UPDATE_USER",
+export const user = (userInfo) => ({
+  type: 'UPDATE_USER',
   userInfo
+})
+
+export const addFavorite = (favorites) => ({
+  type: 'ADD_FAVORITES',
+  favorites
 })

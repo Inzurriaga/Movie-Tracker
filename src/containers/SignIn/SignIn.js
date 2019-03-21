@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from "react-redux"
-import { addUser } from "../../actions"
-import { postFetch, getFetch } from '../../api'
+import { connect } from 'react-redux'
+import { user } from '../../actions'
+import { postFetch, getFetch, addfave } from '../../api'
 
 
 class SignIn extends Component {
@@ -17,7 +17,7 @@ class SignIn extends Component {
   handleLogin = async (url, method, body) => {
     try {
       const response = await postFetch(url, method, body);
-      this.props.addUser(response);
+      this.props.user(response);
     } catch (error) {
       console.log(error.message);
     }
@@ -28,8 +28,14 @@ class SignIn extends Component {
     const { password, email } = this.state
     const url = 'users'
     await this.handleLogin(url, 'POST', { password, email })
-    await this.addfave()
-    this.grabFavorites(this.props.userInfo.id)
+    const userFavorites = await this.fetchFavorites(this.props.userInfo.id);
+    console.log(userFavorites);
+  }
+
+  fetchFavorites = async (id) => {
+    const url = `users/${id}/favorites`
+    let response = await getFetch(url)
+    return response;
   }
 
 
@@ -41,18 +47,7 @@ class SignIn extends Component {
     this.signIn(event)
   }
 
-  addfave = async () => {
-    const info = {movie_id: 8920, user_id: 5, title: "butt face", poster_path: "hwat", release_date: 2019, vote_average: 7.5, overview: "hello worle"}
-    const url = 'users/favorites/new'
-    let hello = await this.handleLogin(url, "post", info)
-    console.log(hello)
-  }
 
-  grabFavorites = async (id) => {
-    const url = `users/${id}/favorites`
-    let hello = await getFetch(url)
-    console.log("fav", hello)
-  }
 
   userInput = (event) => {
     const value = event.target.value
@@ -93,7 +88,7 @@ export const mapStateToProps = (state) => ({
 })
 
 export const mapDispstchToProps = (dispatch) => ({
-    addUser: (userInfo) => dispatch(addUser(userInfo))
+  user: (userInfo) => dispatch(user(userInfo))
 })
 
 export default connect(mapStateToProps, mapDispstchToProps)(SignIn);

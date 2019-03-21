@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 
-import { fetchMovies } from "../../api/index"
+import { addFavorite } from "../../actions"
+import { fetchMovies, postFetch, getFetch } from '../../api'
 
 
 class MovieInfo extends Component {
@@ -25,6 +26,27 @@ class MovieInfo extends Component {
     handleFavorite = (id) => {
       console.log('id', id);
     }
+
+
+    // grabFavorites = async (id) => {
+    //   const url = `users/${id}/favorites`
+    //   let hello = await getFetch(url)
+    //   console.log("fav", hello)
+    // }
+
+    addFavorite = async () => {
+      const url = 'users/favorites/new'
+      const favInfo = {movie_id: 8920, user_id: 7, title: "butt face", poster_path: "hwat", release_date: 2019, vote_average: 7.5, overview: "hello worle"}
+      const response = await postFetch(url, 'POST', favInfo)
+      this.props.addFavorite(response);
+
+      console.log(response)
+    }
+
+    removeFavorite = async () => {
+
+    }
+
 
     render = () => {
         const { id, title, overview, backdrop_path, poster_path, vote_average, release_date, videos } = this.state.currentMovie;
@@ -64,4 +86,13 @@ class MovieInfo extends Component {
     }
 }
 
-export default MovieInfo;
+export const mapStateToProps = (state) => ({
+  user: state.user,
+  favorites: state.favorites
+})
+
+export const mapDispstchToProps = (dispatch) => ({
+  addFavorites: (favorites) => dispatch(addFavorite(favorites))
+})
+
+export default connect(mapStateToProps, mapDispstchToProps)(MovieInfo);
