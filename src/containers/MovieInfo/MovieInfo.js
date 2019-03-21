@@ -51,7 +51,7 @@ class MovieInfo extends Component {
                   <p>{overview}</p>
                 </div>
                 <div className="MovieInfo-Trailer">
-                  <iframe src={`https://youtube.com/embed/${videoKey}`} height="200" width="300"></iframe>
+                  <iframe src={`https://youtube.com/embed/${videoKey}`} title="trailer" height="200" width="300"></iframe>
                 </div>
               </section>
             </div>

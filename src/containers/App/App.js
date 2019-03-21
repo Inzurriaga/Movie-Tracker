@@ -14,9 +14,7 @@ class App extends Component {
     const urlDiscover = "https:api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&";
     try {
       const response = await fetchMovies(urlDiscover, "")
-      console.log(response)
       this.props.getMovies( response.results )
-      console.log('response');
     } catch(error) {
       console.log(error.message)
     }

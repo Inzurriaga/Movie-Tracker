@@ -27,14 +27,14 @@ class MainPage extends Component {
             <div>im loading</div>
           }
           <div className="bottom-option">
-            <Link className="theater-box">Movies in theater</Link>
-            <Link className="theater-box">Coming out Soon</Link>
+            <Link to="/blank" className="theater-box">Movies in theater</Link>
+            <Link to="/blank" className="theater-box">Coming out Soon</Link>
           </div>
         </div>
         <div className="right-option">
-          <Link className="genre-box">Comedy</Link>
-          <Link className="genre-box">Horror</Link>
-          <Link className="genre-box">Action</Link>
+          <Link to="/blank" className="genre-box">Comedy</Link>
+          <Link to="/blank" className="genre-box">Horror</Link>
+          <Link to="/blank" className="genre-box">Action</Link>
         </div>
         
       </div>

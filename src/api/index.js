@@ -23,6 +23,12 @@ const postFetch = async (url, method, body) => {
     return user.data;
 }
 
+const getFetch = async (url) => {
+  const response = await fetch(`${backEndUrl}${url}`)
+  const user = await response.json()
+  return user.data;
+}
 
 
-export { fetchMovies, postFetch }
+
+export { fetchMovies, postFetch, getFetch }

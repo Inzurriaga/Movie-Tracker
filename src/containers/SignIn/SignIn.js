@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux"
 import { addUser } from "../../actions"
-import { postFetch } from '../../api'
+import { postFetch, getFetch } from '../../api'
 
 
 class SignIn extends Component {
@@ -14,9 +14,9 @@ class SignIn extends Component {
     }
   }
 
-  handleLogin = async (url, body) => {
+  handleLogin = async (url, method, body) => {
     try {
-      const response = await postFetch(url, 'POST', body);
+      const response = await postFetch(url, method, body);
       this.props.addUser(response);
     } catch (error) {
       console.log(error.message);
@@ -27,8 +27,9 @@ class SignIn extends Component {
     event.preventDefault();
     const { password, email } = this.state
     const url = 'users'
-    await this.handleLogin(url, { password, email })
-    this.grabFavorites()
+    await this.handleLogin(url, 'POST', { password, email })
+    await this.addfave()
+    this.grabFavorites(this.props.userInfo.id)
   }
 
 
@@ -36,12 +37,21 @@ class SignIn extends Component {
     event.preventDefault();
     const { name, password, email } = this.state
     const url = 'users/new'
-    this.handleLogin(url, { name, password, email })
+    this.handleLogin(url, 'POST', { name, password, email })
     this.signIn(event)
   }
 
-  grabFavorites = () => {
-    console.log(this.props.userInfo.id)
+  addfave = async () => {
+    const info = {movie_id: 8920, user_id: 5, title: "butt face", poster_path: "hwat", release_date: 2019, vote_average: 7.5, overview: "hello worle"}
+    const url = 'users/favorites/new'
+    let hello = await this.handleLogin(url, "post", info)
+    console.log(hello)
+  }
+
+  grabFavorites = async (id) => {
+    const url = `users/${id}/favorites`
+    let hello = await getFetch(url)
+    console.log("fav", hello)
   }
 
   userInput = (event) => {
