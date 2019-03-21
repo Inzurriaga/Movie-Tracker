@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 
-import { fetchMovieInfo } from "../../api/index"
+import { fetchMovies } from "../../api/index"
 
 
 class MovieInfo extends Component {
@@ -12,9 +12,10 @@ class MovieInfo extends Component {
     }
 
     componentDidMount = async () => {
-      const urlSingleMovie = `https://api.themoviedb.org/3/movie/${this.props.movieInfo.id}`;
+      const urlSingleMovie = `https://api.themoviedb.org/3/movie/${this.props.movieInfo.id}?`;
+      const urlEnd = "&append_to_response=videos"
       try {
-        const response = await fetchMovieInfo(urlSingleMovie)
+        const response = await fetchMovies(urlSingleMovie, urlEnd)
         this.setState({ currentMovie: response })
       } catch (error) {
         console.log(error.message)
@@ -26,7 +27,6 @@ class MovieInfo extends Component {
     }
 
     render = () => {
-        // const { i } = this.props.movieInfo
         const { id, title, overview, backdrop_path, poster_path, vote_average, release_date, videos } = this.state.currentMovie;
 
         const backgroundCover = { backgroundImage:`url(http://image.tmdb.org/t/p/original${backdrop_path})`};
@@ -41,7 +41,6 @@ class MovieInfo extends Component {
               <section className="MovieInfo-Copy">
                 <div className="Info-Title">
                   <h3>{title} <span>({release_date.substring(0,4)})</span></h3>
-
                 </div>
                 <div className="Info-Extras">
                   <span>{vote_average}</span>
@@ -52,7 +51,7 @@ class MovieInfo extends Component {
                   <p>{overview}</p>
                 </div>
                 <div className="MovieInfo-Trailer">
-                  <iframe src={`https://youtube.com/embed/${videoKey}`} height="200" width="300"></iframe>
+                  <iframe src={`https://youtube.com/embed/${videoKey}`} title="trailer" height="200" width="300"></iframe>
                 </div>
               </section>
             </div>

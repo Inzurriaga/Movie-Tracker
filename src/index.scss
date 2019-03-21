@@ -3,6 +3,10 @@
 // font-family: 'Lato', sans-serif;
 // font-family: 'Rajdhani', sans-serif;
 
+$font-title: 'Rajdhani', sans-serif;
+$font-copy: 'Lato', sans-serif;
+
+@import "./containers/App/App";
 @import './components/Header/Header';
 @import './containers/MainPage/MainPage';
 @import './containers/SlideShow/SlideShow';
