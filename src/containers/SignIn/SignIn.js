@@ -23,11 +23,12 @@ class SignIn extends Component {
     }
   }
 
-  signIn = (event) => {
+  signIn = async (event) => {
     event.preventDefault();
     const { password, email } = this.state
     const url = 'users'
-    this.handleLogin(url, { password, email })
+    await this.handleLogin(url, { password, email })
+    this.grabFavorites()
   }
 
 
@@ -36,6 +37,11 @@ class SignIn extends Component {
     const { name, password, email } = this.state
     const url = 'users/new'
     this.handleLogin(url, { name, password, email })
+    this.signIn(event)
+  }
+
+  grabFavorites = () => {
+    console.log(this.props.userInfo.id)
   }
 
   userInput = (event) => {
@@ -72,8 +78,12 @@ class SignIn extends Component {
   }
 }
 
+export const mapStateToProps = (state) => ({
+  userInfo: state.user
+})
+
 export const mapDispstchToProps = (dispatch) => ({
     addUser: (userInfo) => dispatch(addUser(userInfo))
 })
 
-export default connect(null, mapDispstchToProps)(SignIn);
+export default connect(mapStateToProps, mapDispstchToProps)(SignIn);

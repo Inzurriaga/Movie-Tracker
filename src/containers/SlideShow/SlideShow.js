@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-// import {} from "react-router-dom"
+import { ReactComponent as Arrow } from "../../images/arrow.svg"
 import { Link } from "react-router-dom"
 import { connect } from "react-redux"
 
@@ -66,10 +66,10 @@ class SlideShow extends Component{
         })
         return(
             <div className="slideshow-section">
-                <div>
+                <div className="slide-container">
                     {slideDisplay}
-                    <button onClick={this.changeSlidesPositionForward}>forward</button>
-                    <button onClick={this.changeSlidesPositionBack}>back</button>
+                    <Arrow className="arrow-one" onClick={this.changeSlidesPositionForward}/>
+                    <Arrow className="arrow-two" onClick={this.changeSlidesPositionBack}/>
                 </div>
             </div>
         )
