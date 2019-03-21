@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux"
+import { addUser } from "../../actions"
 import { postFetch } from '../../api'
 
 
@@ -8,15 +10,14 @@ class SignIn extends Component {
     this.state = {
       name: '',
       email: '',
-      password: '',
-      email: ''
+      password: ''
     }
   }
 
   handleLogin = async (url, body) => {
     try {
       const response = await postFetch(url, 'POST', body);
-      console.log(response);
+      this.props.addUser(response);
     } catch (error) {
       console.log(error.message);
     }
@@ -71,4 +72,8 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn;
+export const mapDispstchToProps = (dispatch) => ({
+    addUser: (userInfo) => dispatch(addUser(userInfo))
+})
+
+export default connect(null, mapDispstchToProps)(SignIn);
