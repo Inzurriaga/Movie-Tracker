@@ -18,9 +18,9 @@ const settings = (method, body) => ({
 })
 
 const postFetch = async (url, method, body) => {
-    const response = await fetch(`${backEndUrl}${url}`, settings(method, body))
-    const user = await response.json()
-    return user.data;
+  const response = await fetch(`${backEndUrl}${url}`, settings(method, body))
+  const retrievedData = await response.json()
+  return retrievedData.data;
 }
 
 const getFetch = async (url) => {

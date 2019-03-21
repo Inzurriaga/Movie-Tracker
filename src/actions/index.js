@@ -9,7 +9,12 @@ export const user = (userInfo) => ({
   userInfo
 })
 
-export const addFavorite = (favorites) => ({
+export const addFavorite = (favorite) => ({
   type: 'ADD_FAVORITES',
-  favorites
+  favorite
+})
+
+export const initialFavorites = (favLogin) => ({
+  type: 'LOGIN_FAVORITES',
+  favLogin
 })

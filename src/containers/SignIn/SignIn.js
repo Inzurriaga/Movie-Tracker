@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { user } from '../../actions'
+import { user, addFavorite, initialFavorites } from '../../actions'
 import { postFetch, getFetch, addfave } from '../../api'
 
 
@@ -28,16 +28,14 @@ class SignIn extends Component {
     const { password, email } = this.state
     const url = 'users'
     await this.handleLogin(url, 'POST', { password, email })
-    const userFavorites = await this.fetchFavorites(this.props.userInfo.id);
-    console.log(userFavorites);
+    const userFavorites = await this.fetchUserFavorite(this.props.userInfo.id);
   }
 
-  fetchFavorites = async (id) => {
+  fetchUserFavorite = async (id) => {
     const url = `users/${id}/favorites`
-    let response = await getFetch(url)
-    return response;
+    const response = await getFetch(url)
+    this.props.initialFavorites(response)
   }
-
 
   createAccount = (event) => {
     event.preventDefault();
@@ -46,8 +44,6 @@ class SignIn extends Component {
     this.handleLogin(url, 'POST', { name, password, email })
     this.signIn(event)
   }
-
-
 
   userInput = (event) => {
     const value = event.target.value
@@ -88,7 +84,8 @@ export const mapStateToProps = (state) => ({
 })
 
 export const mapDispstchToProps = (dispatch) => ({
-  user: (userInfo) => dispatch(user(userInfo))
+  user: (userInfo) => dispatch(user(userInfo)),
+  initialFavorites: (favorites) => dispatch(initialFavorites(favorites))
 })
 
 export default connect(mapStateToProps, mapDispstchToProps)(SignIn);

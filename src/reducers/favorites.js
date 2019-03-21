@@ -1,7 +1,10 @@
 export const favorites = (state = [], action) => {
   switch(action.type) {
     case 'ADD_FAVORITES':
-      return [...state, action.favorites]
+      console.log(action);
+      return [...state, action.favorite]
+    case 'LOGIN_FAVORITES':
+      return action.favLogin
     default:
       return state
   }
