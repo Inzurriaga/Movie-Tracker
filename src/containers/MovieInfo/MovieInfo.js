@@ -1,14 +1,15 @@
 import React, { Component } from "react"
 import { connect } from 'react-redux'
-import { addFavorite } from "../../actions"
-import { fetchMovies, postFetch, getFetch } from '../../api'
+import { addFavorite, removeFavorite } from "../../actions"
+import { fetchMovies, postFetch, getFetch, deleteFetch } from '../../api'
 
 
 class MovieInfo extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        currentMovie: []
+        currentMovie: [],
+        favoriteStatus: false,
       }
     }
 
@@ -23,28 +24,28 @@ class MovieInfo extends Component {
       }
     }
 
-    handleFavorite = async (id) => {
-      console.log('id', id);
-      this.addFavorite();
+    handleFavorite = async (movieId) => {
+      if(!this.props.favorites.includes(movieId)){
+        this.addFavorite()
+      } else {
+        this.removeFavorite(movieId)
+      }
     }
-
-
-    // grabFavorites = async (id) => {
-    //   const url = `users/${id}/favorites`
-    //   let hello = await getFetch(url)
-    //   console.log("fav", hello)
-    // }
 
     addFavorite = async () => {
       const url = 'users/favorites/new'
       const { id, title, poster_path, release_date, vote_average, overview} = this.state.currentMovie;
       const favInfo = { movie_id: id, user_id: this.props.user.id, title, poster_path, release_date, vote_average, overview }
       await postFetch(url, 'POST', favInfo);
-      this.props.addFavorite(favInfo);
+      this.props.addFavorite(id);
     }
 
-    removeFavorite = async () => {
-
+    removeFavorite = async (movieId) => {
+      const url = `users/${this.props.user.id}/favorites/${movieId}`
+      const { id, title, poster_path, release_date, vote_average, overview} = this.state.currentMovie;
+      // const favInfo = { movie_id: id, user_id: this.props.user.id, title, poster_path, release_date, vote_average, overview }
+      await deleteFetch(url);
+      this.props.removeFavorite(id);
     }
 
 
@@ -52,6 +53,8 @@ class MovieInfo extends Component {
         const { id, title, overview, backdrop_path, poster_path, vote_average, release_date, videos } = this.state.currentMovie;
 
         const backgroundCover = { backgroundImage:`url(http://image.tmdb.org/t/p/original${backdrop_path})`};
+
+        let favoriteStatus = this.props.favorites.includes(id) ? 'Favorite_True' : 'Favorite_False';
 
         if(typeof id === 'number') {
           const videoKey = videos.results[0].key;
@@ -66,7 +69,9 @@ class MovieInfo extends Component {
                 </div>
                 <div className="Info-Extras">
                   <span>{vote_average}</span>
-                  <button onClick={() => this.handleFavorite(id)}><i className="far fa-star"></i></button>
+                  <button onClick={() => this.handleFavorite(id)} className={favoriteStatus}>
+                    <i className="far fa-star"></i>
+                  </button>
                 </div>
                 <div className="Info-Copy">
                   <h5>Overview</h5>
@@ -92,7 +97,8 @@ export const mapStateToProps = (state) => ({
 })
 
 export const mapDispstchToProps = (dispatch) => ({
-  addFavorite: (favorites) => dispatch(addFavorite(favorites))
+  addFavorite: (favorite) => dispatch(addFavorite(favorite)),
+  removeFavorite: (favorite) => dispatch(removeFavorite(favorite))
 })
 
 export default connect(mapStateToProps, mapDispstchToProps)(MovieInfo);

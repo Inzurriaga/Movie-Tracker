@@ -18,3 +18,8 @@ export const initialFavorites = (favLogin) => ({
   type: 'LOGIN_FAVORITES',
   favLogin
 })
+
+export const removeFavorite = (favorite) => ({
+  type: 'REMOVE_FAVORITE',
+  favorite
+})

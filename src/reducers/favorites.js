@@ -1,10 +1,12 @@
 export const favorites = (state = [], action) => {
   switch(action.type) {
     case 'ADD_FAVORITES':
-      console.log(action);
       return [...state, action.favorite]
     case 'LOGIN_FAVORITES':
-      return action.favLogin
+      return action.favLogin.map(id => id.movie_id)
+    case 'REMOVE_FAVORITE':
+      console.log(action);
+      return state.filter(fav => fav !== action.favorite)
     default:
       return state
   }
