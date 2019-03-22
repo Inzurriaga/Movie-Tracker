@@ -24,9 +24,9 @@ class Header extends Component {
     return (
       <div className="Header">
         <nav className="Header-Nav">
-          <div>Home</div>
-          <div>Movies</div>
-          <div>Favorites</div>
+          <div><h2>Home</h2></div>
+          <div><h2>Movies</h2></div>
+          <div><h2>Favorites</h2></div>
         </nav>
         <section className="LoginBtn">
           <h4 className="User-Info">{userName}</h4>
