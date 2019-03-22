@@ -11,6 +11,7 @@ class SignIn extends Component {
       name: '',
       email: '',
       password: '',
+      newUser: true,
     }
   }
 
@@ -29,6 +30,7 @@ class SignIn extends Component {
     const url = 'users'
     await this.handleLogin(url, 'POST', { password, email })
     const userFavorites = await this.fetchUserFavorite(this.props.userInfo.id);
+    this.props.hideModal()
   }
 
   fetchUserFavorite = async (id) => {
@@ -53,30 +55,47 @@ class SignIn extends Component {
     })
   }
 
+  handleSignSwitch = () => {
+    this.setState({
+      newUser: !this.state.newUser,
+    })
+  }
+
   render(){
-
-    const showHideClassName = this.props.show ? "SignIn display-block" : "SignIn display-none";
-
-
+    const btnActive = 'btnChoice choice-active';
+    const btnInactive = 'btnChoice choice-inactive';
+    const { newUser } = this.state;
     return (
-      <div className={showHideClassName}>
-        <form onSubmit={this.createAccount}>
-          <label>Name</label>
-          <input onChange={this.userInput} type="text" className="name"/>
-          <label>Email</label>
-          <input onChange={this.userInput} type="text" className="email"/>
-          <label>Password</label>
-          <input onChange={this.userInput} type="text" className="password"/>
-          <button type="submit">Create Account</button>
-        </form>
-        <br/><br/><br/><br/>
-        <form onSubmit={this.signIn}>
-          <label>Email</label>
-          <input onChange={this.userInput} type="text" className="email"/>
-          <label>Password</label>
-          <input onChange={this.userInput} type="text" className="password"/>
-          <button type="submit">Sign In</button>
-        </form>
+      <div className="SignIn-Content">
+        <section className="Modal-Close">
+          <button className="closeBtn" onClick={this.props.hideModal}>X</button>
+        </section>
+        <section className="Modal-Header">
+          <button className={newUser ? btnInactive : btnActive} onClick={this.handleSignSwitch}>Create Account</button>
+          <button className={newUser ? btnActive : btnInactive} onClick={this.handleSignSwitch}>Sign In</button>
+        </section>
+        <section className="Modal-Body">
+        { this.state.newUser ?
+            <form onSubmit={this.createAccount}>
+              <label>Name</label>
+              <input onChange={this.userInput} type="text" className="name"/>
+              <label>Email</label>
+              <input onChange={this.userInput} type="text" className="email"/>
+              <label>Password</label>
+              <input onChange={this.userInput} type="text" className="password"/>
+              <button type="submit">Create Account</button>
+            </form>
+          :
+          <form onSubmit={this.signIn}>
+            <label>Email</label>
+            <input onChange={this.userInput} type="text" className="email"/>
+            <label>Password</label>
+            <input onChange={this.userInput} type="text" className="password"/>
+            <button type="submit">Sign In</button>
+          </form>
+        }
+
+        </section>
       </div>
     )
   }

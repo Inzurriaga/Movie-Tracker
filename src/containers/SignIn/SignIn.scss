@@ -1,6 +1,62 @@
-.SignIn {
-  label {
-    color:#fff;
+.SignIn-Content {
+  position:fixed;
+  background: white;
+  height: auto;
+  padding: 1em;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+
+  .Modal-Close {
+    .closeBtn {
+      position: absolute;
+      right: -5px;
+      top: -5px;
+      background: none;
+      border:none;
+      outline: none;
+    }
+  }
+
+
+  .Modal-Header {
+    padding-bottom: 1em;
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+
+    .btnChoice {
+      width: 50%;
+      outline: none;
+
+      &.choice-active {
+        background:#fff;
+      }
+
+      &.choice-inactive {
+        background:#cccccc;
+        pointer-events: none;
+      }
+
+    }
+  }
+
+
+  .Modal-Body {
+
+    form {
+      display: flex;
+      flex-direction: column;
+
+      label {
+
+      }
+
+      button {
+
+      }
+
+    }
   }
 
 }
