@@ -5,12 +5,12 @@ import { postFetch, getFetch, addfave } from '../../api'
 
 
 class SignIn extends Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
       name: '',
       email: '',
-      password: ''
+      password: '',
     }
   }
 
@@ -55,8 +55,11 @@ class SignIn extends Component {
 
   render(){
 
+    const showHideClassName = this.props.show ? "SignIn display-block" : "SignIn display-none";
+
+
     return (
-      <div className="SignIn">
+      <div className={showHideClassName}>
         <form onSubmit={this.createAccount}>
           <label>Name</label>
           <input onChange={this.userInput} type="text" className="name"/>
@@ -80,12 +83,12 @@ class SignIn extends Component {
 }
 
 export const mapStateToProps = (state) => ({
-  userInfo: state.user
+  userInfo: state.user,
 })
 
 export const mapDispstchToProps = (dispatch) => ({
   user: (userInfo) => dispatch(user(userInfo)),
-  initialFavorites: (favorites) => dispatch(initialFavorites(favorites))
+  initialFavorites: (favorites) => dispatch(initialFavorites(favorites)),
 })
 
 export default connect(mapStateToProps, mapDispstchToProps)(SignIn);
