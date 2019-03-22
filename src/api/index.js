@@ -17,10 +17,15 @@ const settings = (method, body) => ({
   body: JSON.stringify(body)
 })
 
+const deleteSettings = () => ({
+  method: 'DELETE',
+  headers: {'Content-Type': 'application/json'}
+})
+
 const postFetch = async (url, method, body) => {
-    const response = await fetch(`${backEndUrl}${url}`, settings(method, body))
-    const user = await response.json()
-    return user.data;
+  const response = await fetch(`${backEndUrl}${url}`, settings(method, body))
+  const retrievedData = await response.json()
+  return retrievedData.data;
 }
 
 const getFetch = async (url) => {
@@ -29,6 +34,15 @@ const getFetch = async (url) => {
   return user.data;
 }
 
+const deleteFetch = async (url) => {
+  const response = await fetch(`${backEndUrl}${url}`, deleteSettings())
+  console.log(response);
+  const retrievedData = await response.json()
+  console.log(retrievedData);
+}
 
 
-export { fetchMovies, postFetch, getFetch }
+
+
+
+export { fetchMovies, postFetch, getFetch, deleteFetch }

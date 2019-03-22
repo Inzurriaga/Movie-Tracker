@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
-import { connect } from "react-redux"
-import { addUser } from "../../actions"
-import { postFetch, getFetch } from '../../api'
+import { connect } from 'react-redux'
+import { user, addFavorite, initialFavorites } from '../../actions'
+import { postFetch, getFetch, addfave } from '../../api'
 
 
 class SignIn extends Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
       name: '',
       email: '',
-      password: ''
+      password: '',
     }
   }
 
   handleLogin = async (url, method, body) => {
     try {
       const response = await postFetch(url, method, body);
-      this.props.addUser(response);
+      this.props.user(response);
     } catch (error) {
       console.log(error.message);
     }
@@ -28,10 +28,14 @@ class SignIn extends Component {
     const { password, email } = this.state
     const url = 'users'
     await this.handleLogin(url, 'POST', { password, email })
-    await this.addfave()
-    this.grabFavorites(this.props.userInfo.id)
+    const userFavorites = await this.fetchUserFavorite(this.props.userInfo.id);
   }
 
+  fetchUserFavorite = async (id) => {
+    const url = `users/${id}/favorites`
+    const response = await getFetch(url)
+    this.props.initialFavorites(response)
+  }
 
   createAccount = (event) => {
     event.preventDefault();
@@ -39,19 +43,6 @@ class SignIn extends Component {
     const url = 'users/new'
     this.handleLogin(url, 'POST', { name, password, email })
     this.signIn(event)
-  }
-
-  addfave = async () => {
-    const info = {movie_id: 8920, user_id: 5, title: "butt face", poster_path: "hwat", release_date: 2019, vote_average: 7.5, overview: "hello worle"}
-    const url = 'users/favorites/new'
-    let hello = await this.handleLogin(url, "post", info)
-    console.log(hello)
-  }
-
-  grabFavorites = async (id) => {
-    const url = `users/${id}/favorites`
-    let hello = await getFetch(url)
-    console.log("fav", hello)
   }
 
   userInput = (event) => {
@@ -64,8 +55,11 @@ class SignIn extends Component {
 
   render(){
 
+    const showHideClassName = this.props.show ? "SignIn display-block" : "SignIn display-none";
+
+
     return (
-      <div className="SignIn">
+      <div className={showHideClassName}>
         <form onSubmit={this.createAccount}>
           <label>Name</label>
           <input onChange={this.userInput} type="text" className="name"/>
@@ -89,11 +83,12 @@ class SignIn extends Component {
 }
 
 export const mapStateToProps = (state) => ({
-  userInfo: state.user
+  userInfo: state.user,
 })
 
 export const mapDispstchToProps = (dispatch) => ({
-    addUser: (userInfo) => dispatch(addUser(userInfo))
+  user: (userInfo) => dispatch(user(userInfo)),
+  initialFavorites: (favorites) => dispatch(initialFavorites(favorites)),
 })
 
 export default connect(mapStateToProps, mapDispstchToProps)(SignIn);

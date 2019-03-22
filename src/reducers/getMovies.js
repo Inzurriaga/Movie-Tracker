@@ -1,5 +1,3 @@
-// The thing that changes state
-
 export const getMovies = (state = [], action) => {
   switch(action.type) {
     case 'GET_MOVIES':

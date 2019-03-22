@@ -55,6 +55,14 @@
       color:#fff;
       font-family: $font-title;
 
+      .Favorite_True {
+        color: yellow;
+      }
+
+      .Favorite_False {
+        color:#fff;
+      }
+
       button {
         background:none;
         border:none;
@@ -62,6 +70,9 @@
         cursor: pointer;
         color:#fff;
       }
+
+
+
     }
 
     .Info-Copy {
