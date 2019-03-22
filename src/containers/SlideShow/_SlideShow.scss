@@ -5,7 +5,7 @@
         height: 100%;
         width: 100%;
     }
-    
+
     .slide-image {
         box-sizing: border-box;
         position: relative;
@@ -21,7 +21,7 @@
             font-size: 2.5em;
             letter-spacing: 0.02em;
             text-shadow: 2px 2px 5px black;
-            font-family: $font-title;
+            font-family: $font-Abel;
             display: table-cell;
             vertical-align: bottom;
             color: white;
@@ -38,7 +38,7 @@
             content: "";
             top: 0px;
             right: 0px;
-            background: linear-gradient(to left, rgba(35,31,32,1) 0%,rgba(125,185,232,0) 100%); 
+            background: linear-gradient(to left, rgba(35,31,32,1) 0%,rgba(125,185,232,0) 100%);
             position: absolute;
             width: 100px;
             z-index: 2;
@@ -47,7 +47,7 @@
         &::before {
             content: "";
             left: 0px;
-            background: linear-gradient(to right, rgba(35,31,32,1) 0%,rgba(125,185,232,0) 100%); 
+            background: linear-gradient(to right, rgba(35,31,32,1) 0%,rgba(125,185,232,0) 100%);
             position: absolute;
             width: 100px;
             z-index: 2;
