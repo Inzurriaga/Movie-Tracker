@@ -3,12 +3,13 @@ import { Route } from "react-router-dom"
 import { connect } from "react-redux"
 import { getMovies, getGenres } from '../../actions';
 import { fetchMovies } from "../../api/index";
-import MainPage from '../MainPage/MainPage.js'
+import MainPage from '../MainPage/MainPage'
 import MovieInfo from "../MovieInfo/MovieInfo"
-import Header from '../../containers/Header/Header.js'
-import Footer from '../../components/Footer/Footer.js'
+import Header from '../../containers/Header/Header'
+import Footer from '../../components/Footer/Footer'
+import Movies from "../Movies/Movies"
 
-class App extends Component {
+export class App extends Component {
   constructor() {
     super();
     this.state = {
@@ -57,6 +58,14 @@ class App extends Component {
             return <MovieInfo movieInfo={movieInfo}/>
           }} />
         }
+        {
+          this.props.genres.length &&
+          <Route exact path="/movies/genre/:id" render={({match}) => {
+            const { id } = match.params
+            const genre = this.props.genres.find((genre, index) => index === parseInt(id))
+            return <Movies genreInfo={genre}/>
+          }} />
+        }
         <Footer />
       </div>
     );
@@ -65,6 +74,7 @@ class App extends Component {
 
 export const mapStateToProps = (state) => ({
   movies: state.movies,
+  genres: state.genres
 })
 
 export const mapDispatchToProps = (dispatch) => ({

@@ -13,6 +13,7 @@ export const user = (userInfo) => ({
 export const getGenres = (genre) => ({
   type: "GET_GENRES",
   genre
+})
 
   
 export const addFavorite = (favorite) => ({
