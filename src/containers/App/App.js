@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from "react-router-dom"
 import { connect } from "react-redux"
-import { getMovies } from '../../actions';
+import { getMovies, getGenres } from '../../actions';
 import { fetchMovies } from "../../api/index";
 import MainPage from '../MainPage/MainPage.js'
 import MovieInfo from "../MovieInfo/MovieInfo"
@@ -9,19 +9,42 @@ import Header from '../../components/Header/Header.js'
 import Footer from '../../components/Footer/Footer.js'
 
 class App extends Component {
-
+  constructor() {
+    super();
+    this.state = {
+      moviesCat: [
+        "&sort_by=popularity.desc",
+        "&with_genres=28",
+        "&with_genres=27",
+        "&with_genres=35"
+      ],
+      urlMovies: "https:api.themoviedb.org/3/discover/movie?"
+    } 
+  }
   componentDidMount = async () => {
-    const urlDiscover = "https:api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&";
+    const { moviesCat, urlMovies } = this.state;
     try {
-      const response = await fetchMovies(urlDiscover, "")
-      this.props.getMovies( response.results )
+      const allCategories = moviesCat.map( async (movie) => {
+        const singleCategory = await fetchMovies(urlMovies, movie)
+        return singleCategory
+      })
+      let response = await Promise.all(allCategories)
+      this.props.getMovies(response[0].results)
+      this.movies(response)
     } catch(error) {
-      console.log(error.message)
+      console.log("hell", error.message)
     }
+  }
+
+  movies = (response) => {
+    let hello = response.filter((genre, index) => index > 0 )
+    console.log(hello)
+    this.props.getGenres(hello)
   }
 
 
   render() {
+    console.log(this.props.movies)
     return (
       <div className="App">
         <Header />
@@ -46,6 +69,7 @@ export const mapStateToProps = (state) => ({
 
 export const mapDispatchToProps = (dispatch) => ({
   getMovies: (movies) => dispatch(getMovies(movies)),
+  getGenres: (genre) => dispatch(getGenres(genre)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

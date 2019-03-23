@@ -12,6 +12,7 @@ class MovieInfo extends Component {
     }
 
     componentDidMount = async () => {
+      console.log(this.props.movieInfo)
       const urlSingleMovie = `https://api.themoviedb.org/3/movie/${this.props.movieInfo.id}?`;
       const urlEnd = "&append_to_response=videos"
       try {

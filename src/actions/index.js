@@ -8,3 +8,8 @@ export const addUser = (userInfo) => ({
   type: "UPDATE_USER",
   userInfo
 })
+
+export const getGenres = (genre) => ({
+  type: "GET_GENRES",
+  genre
+})
