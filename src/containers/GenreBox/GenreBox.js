@@ -4,13 +4,22 @@ import { connect } from "react-redux"
 
 
 export class GenreBox extends Component {
+    constructor() {
+        super();
+        this.state = {
+            genre: ["Action", "Horror", "Comedy"]
+        }
+    }
     componentDidMount = () => {
 
     }
 
     render = () => {
-        const genreDisplay = this.props.genres.map((genre) => {
-            return(<Link></Link>)
+        const genreDisplay = this.props.genres.map((genre, index) => {
+            let backgroundImage = {backgroundImage: `url( http://image.tmdb.org/t/p/original${genre.results[0].backdrop_path})`}
+            return(
+                 <Link to="/blank" style={backgroundImage} className="genre-box">{this.state.genre[index]}</Link>
+                 )
         })
         return(
             <div>

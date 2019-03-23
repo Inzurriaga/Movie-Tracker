@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom"
 import SlideShow from "../SlideShow/SlideShow";
-import Genres from "../GenreBox/GenreBox"
+import GenreBox from "../GenreBox/GenreBox"
 
 
 class MainPage extends Component {
@@ -23,9 +23,7 @@ class MainPage extends Component {
           </div>
         </div>
         <div className="right-option">
-          <Link to="/blank" className="genre-box">Comedy</Link>
-          <Link to="/blank" className="genre-box">Horror</Link>
-          <Link to="/blank" className="genre-box">Action</Link>
+          <GenreBox />
         </div>
 
       </div>
