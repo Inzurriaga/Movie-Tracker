@@ -5,7 +5,7 @@ import { getMovies } from '../../actions';
 import { fetchMovies } from "../../api/index";
 import MainPage from '../MainPage/MainPage.js'
 import MovieInfo from "../MovieInfo/MovieInfo"
-import Header from '../../components/Header/Header.js'
+import Header from '../../containers/Header/Header.js'
 import Footer from '../../components/Footer/Footer.js'
 
 class App extends Component {

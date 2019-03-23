@@ -1,5 +1,5 @@
 import React, { Component} from 'react';
-import SignIn from "../../containers/SignIn/SignIn";
+import SignIn from "../SignIn/SignIn";
 
 class Header extends Component {
   constructor() {

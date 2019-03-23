@@ -15,7 +15,7 @@ $font-copy: 'Lato', sans-serif;
 $font-Abel: 'Abel', sans-serif;
 
 @import "./containers/App/App";
-@import './components/Header/Header';
+@import './containers/Header/Header';
 @import './containers/MainPage/MainPage';
 @import './containers/SlideShow/SlideShow';
 @import './containers/MovieInfo/MovieInfo';
