@@ -20,7 +20,7 @@ export class App extends Component {
         "&with_genres=35"
       ],
       urlMovies: "https:api.themoviedb.org/3/discover/movie?"
-    } 
+    }
   }
 
   componentDidMount = async () => {
@@ -60,9 +60,15 @@ export class App extends Component {
           <Route exact path="/movies/genre/:id" render={({match}) => {
             const { id } = match.params
             const genre = this.props.genres.find((genre, index) => index === parseInt(id))
-            return <Movies genreInfo={genre}/>
+            return <Movies id="genres" genreInfo={genre}/>
           }} />
         }
+        <Route exact path="/movies/allMovies" render={() => {
+          return <Movies id="allMovies" />
+        }} />
+        <Route exact path="/movies/favorites" render={() => {
+          return <Movies id="favorites" />
+        }} />
         <Footer />
       </div>
     );
