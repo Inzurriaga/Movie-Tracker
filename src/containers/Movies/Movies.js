@@ -1,65 +1,135 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
-import { fetchMovies, postFetch, deleteFetch } from '../../api'
+import { fetchMovies } from '../../api'
 
 
 export class Movies extends Component {
   constructor() {
     super();
     this.state = {
-      moviesToSave: []
+      moviesToSave: [],
+      movieGenreTitles: []
     }
   }
 
-  componentDidMount = async () => {
-    console.log(this.props);
+  componentDidMount = () => {
     if(this.props.id === "allMovies") {
-      const url = '';
-      const urlEnd = '';
-      const allMovies = await this.fetchMoviesForPage()
-      this.setState({
-        moviesToSave: allMovies
-      })
+      console.log('in all movies display');
+      this.fetchGenresCategories()
     } else if (this.props.id === "genres") {
-      this.setState({
-        moviesToSave: this.props.genreInfo.results
-      })
+      console.log('in specific genres');
+      this.setAllMovies(this.props.genreInfo.results)
     } else if (this.props.id === "favorites") {
-      console.log('favs', this.props);
-      const url = '';
-      const urlEnd = '';
-      const favoritesMovies = await this.fetchMoviesForPage(this.props.favorites)
-      this.setState({
-        moviesToSave: favoritesMovies
-      })
+      console.log('in specific favorites');
+      this.fetchFavoriteMovies(this.props.favorites)
     }
   }
 
-  fetchMoviesForPage = async (fetch, ) => {
+  fetchGenresCategories = async () => {
+    const url = 'https://api.themoviedb.org/3/genre/movie/list?'
     try {
-      const response = await fetchMovies()
-      return response
+      const unresolvedTitles = await fetchMovies(url, '')
+      const allGenres = await this.fetchAllGenres(unresolvedTitles.genres)
+      const resolvedTitles = this.cleanGenreTitles(unresolvedTitles.genres)
+      this.setState({
+        movieGenreTitles: resolvedTitles
+      })
+      console.log(this.state);
     } catch (error) {
       console.log(error.message);
     }
+  }
 
+  cleanGenreTitles = (unresolvedTitles) => {
+    return unresolvedTitles.map(title => {
+      return title.name
+    })
+  }
 
+  fetchAllGenres = async (genreArr) => {
+    const url = "https:api.themoviedb.org/3/discover/movie?";
+    let genreTitles = []
+    try {
+      const unresolvedGenres = genreArr.map( async (genre) => {
+        const backEndUrl = `&with_genres=${genre.id}`;
+        const singleGenre = await fetchMovies(url, backEndUrl)
+        return singleGenre.results;
+      })
+      const allGenres = await Promise.all(unresolvedGenres)
+      this.setAllGenres(allGenres)
+    } catch(error) {
+      console.log(error.message)
+    }
+  }
 
+  setAllGenres = (allGenres) => {
+    this.setState({
+      moviesToSave: allGenres,
+    })
+  }
+
+  setAllMovies = (allMovies) => {
+    this.setState({
+      moviesToSave: allMovies
+    })
+  }
+
+  fetchFavoriteMovies = async (favArr) => {
+    try {
+      const unresolvedFavorites = favArr.map( async (movieId) => {
+        let favUrl = `https://api.themoviedb.org/3/movie/${movieId}?`;
+        const singleFavorite = await fetchMovies(favUrl, '')
+        return singleFavorite
+      })
+      const allFavoriteMovies = await Promise.all(unresolvedFavorites)
+      this.setFavorites(allFavoriteMovies)
+    } catch(error) {
+      console.log(error.message)
+    }
+  }
+
+  setFavorites = (favoritesMovies) => {
+    this.setState({
+      moviesToSave: favoritesMovies
+    })
   }
 
   render() {
-      const moviesToRender = this.state.moviesToSave.map(movie => {
-          return (
-              <Link key={movie.id} to={`/movies/${movie.id}`}>
-                  {movie.title}
-              </Link>
-          )
-      })
+      const { moviesToSave, movieGenreTitles } = this.state;
+      let moviesToRender = null;
 
-      return(
+      if(!(this.props.id === "allMovies")) {
+        moviesToRender = moviesToSave.map(movie => {
+            return (
+                <Link key={movie.id} to={`/movies/${movie.id}`}>
+                    {movie.title}
+                </Link>
+            )
+        })
+      } else if (this.props.id === "allMovies"){
+        moviesToRender = moviesToSave.map((row, index) => {
+
+          let movieRow = row.map(movie => {
+                      return (
+                          <Link key={movie.id} to={`/movies/${movie.id}`}>
+                              {movie.title}
+                          </Link>
+                      )
+          })
+
+          return (
+            <div>
+              {movieGenreTitles[index]}
+              {movieRow}
+            </div>
+          )
+        })
+      }
+
+      return (
           <div>
-              {moviesToRender}
+            {moviesToRender}
           </div>
       )
   }
