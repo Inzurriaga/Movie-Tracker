@@ -1,5 +1,6 @@
 import React, { Component} from 'react';
 import SignIn from "../SignIn/SignIn";
+import { Link } from 'react-router-dom'
 
 class Header extends Component {
   constructor() {
@@ -24,9 +25,9 @@ class Header extends Component {
     return (
       <div className="Header">
         <nav className="Header-Nav">
-          <div><h2>Home</h2></div>
-          <div><h2>Movies</h2></div>
-          <div><h2>Favorites</h2></div>
+          <Link key="Home" to="/"><h2>Home</h2></Link>
+          <Link key="All_Movies" to="/movies/allMovies"><h2>Movies</h2></Link>
+          <Link key="Favorites" to="/movies/favorites"><h2>Favorites</h2></Link>
         </nav>
         <section className="LoginBtn">
           <h4 className="User-Info">{userName}</h4>
