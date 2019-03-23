@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { user, addFavorite, initialFavorites } from '../../actions'
-import { postFetch, getFetch, addfave } from '../../api'
+import { user, initialFavorites } from '../../actions'
+import { postFetch, getFetch } from '../../api'
 
 
 class SignIn extends Component {
@@ -29,7 +29,7 @@ class SignIn extends Component {
     const { password, email } = this.state
     const url = 'users'
     await this.handleLogin(url, 'POST', { password, email })
-    const userFavorites = await this.fetchUserFavorite(this.props.userInfo.id);
+    await this.fetchUserFavorite(this.props.userInfo.id);
     this.props.hideModal()
   }
 
@@ -94,7 +94,6 @@ class SignIn extends Component {
             <button type="submit">Sign In</button>
           </form>
         }
-
         </section>
       </div>
     )

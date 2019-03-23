@@ -1,22 +1,18 @@
 import React, { Component } from "react"
-import { connect } from "react-redux"
+import { Link } from "react-router-dom"
 
 export default class Movies extends Component {
-    constructor(){
-        super();
-    }
     render() {
-        console.log(this.props.genreInfo)
-        const hello = this.props.genreInfo.results.map(movie => {
+        const moviesToDisplay = this.props.genreInfo.results.map(movie => {
             return (
-                <div>
+                <Link key={movie.id} to={`/movies/${movie.id}`}>
                     {movie.title}
-                </div>
+                </Link>
             )
         })
         return(
             <div>
-                {hello}
+                {moviesToDisplay}
             </div>
         )
     }
