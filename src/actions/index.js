@@ -1,6 +1,6 @@
 // what gets sent
-export const getMovies = (movies) => ({
-  type: 'GET_MOVIES',
+export const getDiscover = (movies) => ({
+  type: 'GET_DISCOVER',
   movies
 });
 

@@ -25,17 +25,13 @@ class MainPage extends Component {
         <div className="right-option">
           <GenreBox />
         </div>
-
       </div>
     );
   }
 }
 
-
-
 export const mapStateToProps = (state) => ({
   movies: state.movies,
 })
-
 
 export default connect(mapStateToProps)(MainPage)

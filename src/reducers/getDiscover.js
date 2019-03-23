@@ -1,6 +1,6 @@
-export const getMovies = (state = [], action) => {
+export const getDiscover = (state = [], action) => {
   switch(action.type) {
-    case 'GET_MOVIES':
+    case 'GET_DISCOVER':
       return action.movies
     default:
       return state

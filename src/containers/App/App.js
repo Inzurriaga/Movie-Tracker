@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from "react-router-dom"
 import { connect } from "react-redux"
-import { getMovies, getGenres } from '../../actions';
+import { getDiscover, getGenres } from '../../actions';
 import { fetchMovies } from "../../api/index";
 import MainPage from '../MainPage/MainPage'
 import MovieInfo from "../MovieInfo/MovieInfo"
@@ -22,30 +22,28 @@ export class App extends Component {
       urlMovies: "https:api.themoviedb.org/3/discover/movie?"
     } 
   }
+
   componentDidMount = async () => {
     const { moviesCat, urlMovies } = this.state;
     try {
-      const allCategories = moviesCat.map( async (movie) => {
+      const unresolvedAllMovies = moviesCat.map( async (movie) => {
         const singleCategory = await fetchMovies(urlMovies, movie)
         return singleCategory
       })
-      let response = await Promise.all(allCategories)
-      this.props.getMovies(response[0].results)
-      this.movies(response)
+      const allMovies = await Promise.all(unresolvedAllMovies)
+      this.props.getDiscover(allMovies[0].results)
+      this.setGenres(allMovies)
     } catch(error) {
-      console.log("hell", error.message)
+      console.log(error.message)
     }
   }
 
-  movies = (response) => {
-    let hello = response.filter((genre, index) => index > 0 )
-    console.log(hello)
-    this.props.getGenres(hello)
+  setGenres = (response) => {
+    const genres = response.filter((genre, index) => index > 0 )
+    this.props.getGenres(genres)
   }
 
-
   render() {
-    console.log(this.props.movies)
     return (
       <div className="App">
         <Header />
@@ -77,7 +75,7 @@ export const mapStateToProps = (state) => ({
 })
 
 export const mapDispatchToProps = (dispatch) => ({
-  getMovies: (movies) => dispatch(getMovies(movies)),
+  getDiscover: (movies) => dispatch(getDiscover(movies)),
   getGenres: (genre) => dispatch(getGenres(genre)),
 })
 
