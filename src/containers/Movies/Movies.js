@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import { Link } from "react-router-dom"
 import { connect } from "react-redux"
 
 export default class Movies extends Component {
@@ -6,12 +7,11 @@ export default class Movies extends Component {
         super();
     }
     render() {
-        console.log(this.props.genreInfo)
         const hello = this.props.genreInfo.results.map(movie => {
             return (
-                <div>
+                <Link to={`/movies/${movie.id}`}>
                     {movie.title}
-                </div>
+                </Link >
             )
         })
         return(

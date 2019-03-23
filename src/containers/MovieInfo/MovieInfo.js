@@ -14,8 +14,8 @@ class MovieInfo extends Component {
     }
 
     componentDidMount = async () => {
-      console.log(this.props.movieInfo)
-      const urlSingleMovie = `https://api.themoviedb.org/3/movie/${this.props.movieInfo.id}?`;
+      console.log(this.props.movieInfo, "info movie")
+      const urlSingleMovie = `https://api.themoviedb.org/3/movie/${this.props.movieID}?`;
       const urlEnd = "&append_to_response=videos"
       try {
         const response = await fetchMovies(urlSingleMovie, urlEnd)

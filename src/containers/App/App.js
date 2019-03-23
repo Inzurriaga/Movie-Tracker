@@ -54,8 +54,7 @@ export class App extends Component {
           this.props.movies.length &&
           <Route exact path="/movies/:id" render={({match}) => {
             const { id } = match.params
-            const movieInfo = this.props.movies.find(movie => movie.id === parseInt(id))
-            return <MovieInfo movieInfo={movieInfo}/>
+            return <MovieInfo movieID={id}/>
           }} />
         }
         {
