@@ -9,6 +9,12 @@ export const user = (userInfo) => ({
   userInfo
 })
 
+
+export const getGenres = (genre) => ({
+  type: "GET_GENRES",
+  genre
+
+  
 export const addFavorite = (favorite) => ({
   type: 'ADD_FAVORITES',
   favorite
