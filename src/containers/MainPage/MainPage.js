@@ -6,8 +6,8 @@ import GenreBox from "../GenreBox/GenreBox"
 
 
 class MainPage extends Component {
-
   render() {
+    console.log("hello world")
     const { movies } = this.props;
     return (
       <div className="MainPage">

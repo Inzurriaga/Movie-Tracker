@@ -53,7 +53,8 @@ class MovieInfo extends Component {
         const backgroundCover = { backgroundImage:`url(http://image.tmdb.org/t/p/original${backdrop_path})`};
         let favoriteStatus = this.props.favorites.includes(id) ? 'Favorite_True' : 'Favorite_False';
         if(typeof id === 'number') {
-          const videoKey = videos.results[0].key;
+          console.log("fapkldjf;alsdjf;laksjdf;lkajsdf;lajs;lff",  videos.results)
+          const videoKey = videos.results.length === 0  ? null : videos.results[0].key
           return(
             <div className="MovieInfo" style={backgroundCover}>
               <section className="MovieInfo-Poster">
@@ -74,7 +75,7 @@ class MovieInfo extends Component {
                   <p>{overview}</p>
                 </div>
                 <div className="MovieInfo-Trailer">
-                  <iframe src={`https://youtube.com/embed/${videoKey}`} title="trailer" height="200" width="300"></iframe>
+                {videoKey &&  <iframe src={`https://youtube.com/embed/${videoKey}`} title="trailer" height="200" width="300"></iframe>}
                 </div>
               </section>
             </div>
