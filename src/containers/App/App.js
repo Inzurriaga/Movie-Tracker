@@ -60,14 +60,14 @@ export class App extends Component {
           <Route exact path="/movies/genre/:id" render={({match}) => {
             const { id } = match.params
             const genre = this.props.genres.find((genre, index) => index === parseInt(id))
-            return <Movies id="genres" genreInfo={genre}/>
+            return <Movies key="genres" id="genres" genreInfo={genre}/>
           }} />
         }
         <Route exact path="/movies/allMovies" render={() => {
-          return <Movies id="allMovies" />
+          return <Movies key="afaf" id="allMovies" />
         }} />
         <Route exact path="/movies/favorites" render={() => {
-          return <Movies id="favorites" />
+          return <Movies key="favageagadorites" id="favorites" />
         }} />
         <Footer />
       </div>
