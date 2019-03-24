@@ -15,11 +15,11 @@ export class GenreBox extends Component {
         const genreDisplay = this.props.genres.map((genre, index) => {
             let backgroundImage = {backgroundImage: `url( http://image.tmdb.org/t/p/original${genre.results[0].backdrop_path})`}
             return(
-                 <Link key={index} to={`/Movies/genre/${index}`} style={backgroundImage} className="genre-box">{this.state.genre[index]}</Link>
+                   <Link key={index} to={`/Movies/genre/${index}`} style={backgroundImage} className="genre-box"><h3>{this.state.genre[index]}</h3></Link>
                  )
         })
         return(
-            <div>
+            <div className="Genre-Display">
                 {genreDisplay}
             </div>)
     }

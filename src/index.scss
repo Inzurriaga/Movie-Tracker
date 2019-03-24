@@ -21,9 +21,11 @@ $font-Abel: 'Abel', sans-serif;
 @import './containers/MovieInfo/MovieInfo';
 @import './containers/SignIn/SignIn';
 @import './components/Footer/Footer';
+@import './containers/GenreBox/GenreBox';
 
 
 body {
   font-family: $font-copy;
   background: #231f20;
+  background-image: url('./images/concrete_wall.png') 
 }
