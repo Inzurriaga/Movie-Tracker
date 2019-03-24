@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { fetchMovies } from '../../api'
 import GenreMovie from '../GenreMovie/GenreMovie';
+import Masonry from 'react-masonry-component';
 
 
 export class Movies extends Component {
@@ -10,7 +11,8 @@ export class Movies extends Component {
     super();
     this.state = {
       moviesToSave: [],
-      movieGenreTitles: []
+      movieGenreTitles: [],
+      pageTitle: '',
     }
   }
 
@@ -19,13 +21,13 @@ export class Movies extends Component {
       console.log('in all movies display');
       this.fetchGenresCategories()
     } else if (this.props.id === "genres") {
-      console.log('in specific genres');
       this.setAllMovies(this.props.genreInfo.results)
     } else if (this.props.id === "favorites") {
       console.log('in specific favorites');
       this.fetchFavoriteMovies(this.props.favorites)
     }
   }
+
 
   fetchGenresCategories = async () => {
     const url = 'https://api.themoviedb.org/3/genre/movie/list?'
@@ -67,7 +69,9 @@ export class Movies extends Component {
   setAllGenres = (allGenres) => {
     this.setState({
       moviesToSave: allGenres,
+      pageTitle: '',
     })
+
   }
 
   setAllMovies = (allMovies) => {
@@ -99,14 +103,16 @@ export class Movies extends Component {
   render() {
       const { moviesToSave, movieGenreTitles } = this.state;
       let moviesToRender = null;
-
+      console.log(this.props);
       if(!(this.props.id === "allMovies")) {
         moviesToRender = moviesToSave.map(movie => {
-            return (<div>{
-                <Link key={movie.id} to={`/movies/${movie.id}`}>
-                  <GenreMovie movie={movie} />
-                </Link>}
-                <div>
+            let backgroundImage = {backgroundImage: `url( http://image.tmdb.org/t/p/original${movie.backdrop_path})`}
+            return (
+                <Link className="genre-container" key={movie.id} to={`/movies/${movie.id}`}>
+                  <div className="genre-image" style={backgroundImage}>
+                    <h3>{movie.title}</h3>
+                  </div>
+                </Link>
             )
         })
       } else if (this.props.id === "allMovies"){
@@ -117,7 +123,6 @@ export class Movies extends Component {
               {row.map(movie => {
                       return (
                           <Link key={movie.id} to={`/movies/${movie.id}`}>
-
                               {movie.title}
                           </Link>
                       )
@@ -128,8 +133,11 @@ export class Movies extends Component {
       }
 
       return (
-          <div>
-            {moviesToRender}
+          <div className="Movies">
+            <h2 className="Movies-Title">{this.props.title}</h2>
+            <div className="Movies-Display">
+              {moviesToRender}
+            </div>
           </div>
       )
   }

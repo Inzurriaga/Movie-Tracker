@@ -22,10 +22,11 @@ $font-Abel: 'Abel', sans-serif;
 @import './containers/SignIn/SignIn';
 @import './components/Footer/Footer';
 @import './containers/GenreBox/GenreBox';
+@import './containers/Movies/Movies';
 
 
 body {
   font-family: $font-copy;
   background: #231f20;
-  background-image: url('./images/concrete_wall.png') 
+  background-image: url('./images/concrete_wall.png')
 }
