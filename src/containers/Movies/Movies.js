@@ -109,19 +109,16 @@ export class Movies extends Component {
         })
       } else if (this.props.id === "allMovies"){
         moviesToRender = moviesToSave.map((row, index) => {
-
-          let movieRow = row.map(movie => {
+          return (
+            <div>
+              {movieGenreTitles[index]}
+              {row.map(movie => {
                       return (
                           <Link key={movie.id} to={`/movies/${movie.id}`}>
                               {movie.title}
                           </Link>
                       )
-          })
-
-          return (
-            <div>
-              {movieGenreTitles[index]}
-              {movieRow}
+          })}
             </div>
           )
         })

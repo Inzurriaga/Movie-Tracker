@@ -27,7 +27,7 @@ class Header extends Component {
         <nav className="Header-Nav">
           <Link key="Home" to="/"><h2>Home</h2></Link>
           <Link key="All_Movies" to="/movies/allMovies"><h2>Movies</h2></Link>
-          <Link key="Favorites" to="/movies/favorites"><h2>Favorites</h2></Link>
+          <Link key="Favorites" to="/favorites"><h2>Favorites</h2></Link>
         </nav>
         <section className="LoginBtn">
           <h4 className="User-Info">{userName}</h4>

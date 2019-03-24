@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from "react-router-dom"
+import { Route, Switch } from "react-router-dom"
 import { connect } from "react-redux"
 import { getDiscover, getGenres } from '../../actions';
 import { fetchMovies } from "../../api/index";
@@ -47,28 +47,30 @@ export class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Route exact path="/" component={MainPage} />
-        {
-          this.props.movies.length &&
-          <Route exact path="/movies/:id" render={({match}) => {
-            const { id } = match.params
-            return <MovieInfo movieID={id}/>
+        <Switch>
+          <Route exact path="/" component={MainPage} />
+          {
+            this.props.genres.length &&
+            <Route exact path="/movies/genre/:id" render={({match}) => {
+              const { id } = match.params
+              const genre = this.props.genres.find((genre, index) => index === parseInt(id))
+              return <Movies id="genres" genreInfo={genre}/>
+            }} />
+          }
+          <Route exact path="/movies/allMovies" render={() => {
+            return <Movies key="allMovies" id="allMovies" />
           }} />
-        }
-        {
-          this.props.genres.length &&
-          <Route exact path="/movies/genre/:id" render={({match}) => {
-            const { id } = match.params
-            const genre = this.props.genres.find((genre, index) => index === parseInt(id))
-            return <Movies key="genres" id="genres" genreInfo={genre}/>
+          <Route exact path="/favorites" render={() => {
+            return <Movies key="favorites" id="favorites" />
           }} />
-        }
-        <Route exact path="/movies/allMovies" render={() => {
-          return <Movies key="afaf" id="allMovies" />
-        }} />
-        <Route exact path="/movies/favorites" render={() => {
-          return <Movies key="favageagadorites" id="favorites" />
-        }} />
+          {
+            this.props.movies.length &&
+            <Route exact path="/movies/:id" render={({match}) => {
+              const { id } = match.params
+              return <MovieInfo movieID={id}/>
+            }} />
+          }
+        </Switch>
         <Footer />
       </div>
     );
