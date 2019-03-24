@@ -1,6 +1,6 @@
 .MainPage {
   display: flex;
-  height: 80vh;
+  height: 92vh;
   padding: 2em;
   width: 100%;
   max-width: 2000px;
@@ -15,15 +15,33 @@
     .bottom-option {
       margin-top: 2em;
       display: flex;
+      height: 25%;
 
       .theater-box {
         display: flex;
         text-decoration: none;
         align-items: center;
         justify-content: center;
-        background: grey;
-        color: #ffffff;
+        background: #231f20;
         width: 50%;
+
+
+        font-size: 1.2em;
+        font-weight: 100;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        text-shadow: 2px 2px 5px black;
+        font-family: $font-Abel;
+        color: white;
+
+        background-size: contain;
+        background-position: top center;
+        transition: all .5s ease;
+        box-shadow: 0px 2px 10px 3px #00000017;
+        cursor: pointer;
+
+        border-radius: 5px;
+
 
         &:first-child {
           margin-right: 2em;

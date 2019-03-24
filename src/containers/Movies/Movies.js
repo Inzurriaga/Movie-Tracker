@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { fetchMovies } from '../../api'
+import GenreMovie from '../GenreMovie/GenreMovie';
 
 
 export class Movies extends Component {
@@ -101,10 +102,11 @@ export class Movies extends Component {
 
       if(!(this.props.id === "allMovies")) {
         moviesToRender = moviesToSave.map(movie => {
-            return (
+            return (<div>{
                 <Link key={movie.id} to={`/movies/${movie.id}`}>
-                    {movie.title}
-                </Link>
+                  <GenreMovie movie={movie} />
+                </Link>}
+                <div>
             )
         })
       } else if (this.props.id === "allMovies"){
@@ -115,6 +117,7 @@ export class Movies extends Component {
               {row.map(movie => {
                       return (
                           <Link key={movie.id} to={`/movies/${movie.id}`}>
+
                               {movie.title}
                           </Link>
                       )
