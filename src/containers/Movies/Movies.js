@@ -18,16 +18,35 @@ export class Movies extends Component {
 
   componentDidMount = () => {
     if(this.props.id === "allMovies") {
-      console.log('in all movies display');
       this.fetchGenresCategories()
+    } else if (this.props.id === "inTheater"){
+      this.fetchInTheater()
+    } else if ( this.props.id === "upcoming"){
+      this.fetchUpComing()
     } else if (this.props.id === "genres") {
       this.setAllMovies(this.props.genreInfo.results)
     } else if (this.props.id === "favorites") {
-      console.log('in specific favorites');
       this.fetchFavoriteMovies(this.props.favorites)
     }
   }
 
+  fetchInTheater = async () => {
+    const url = "https:api.themoviedb.org/3/discover/movie?"
+    const endurl = "&with_release_type=2|3"
+    const unresolvedTheater = await fetchMovies(url, endurl)
+    this.setState({
+      moviesToSave: unresolvedTheater.results
+    })
+  }
+
+  fetchUpComing = async () => {
+    const url = "http://api.themoviedb.org/3/movie/upcoming?"
+    const endUrl = "&region=US"
+    const unresolvedTheater = await fetchMovies(url, endUrl)
+    this.setState({
+      moviesToSave: unresolvedTheater.results
+    })
+  }
 
   fetchGenresCategories = async () => {
     const url = 'https://api.themoviedb.org/3/genre/movie/list?'

@@ -53,7 +53,6 @@ class MovieInfo extends Component {
         const backgroundCover = { backgroundImage:`url(http://image.tmdb.org/t/p/original${backdrop_path})`};
         let favoriteStatus = this.props.favorites.includes(id) ? 'Favorite_True' : 'Favorite_False';
         if(typeof id === 'number') {
-          console.log("fapkldjf;alsdjf;laksjdf;lkajsdf;lajs;lff",  videos.results)
           const videoKey = videos.results.length === 0  ? null : videos.results[0].key
           return(
             <div className="MovieInfo" style={backgroundCover}>
