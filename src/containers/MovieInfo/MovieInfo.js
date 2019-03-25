@@ -64,9 +64,12 @@ class MovieInfo extends Component {
                   <h3>{title} <span>({release_date.substring(0,4)})</span></h3>
                 </div>
                 <div className="Info-Extras">
-                  <span>{vote_average}</span>
-                  <button onClick={() => this.handleFavorite(id)} className={favoriteStatus}>
+                  <div>
                     <i className="far fa-star"></i>
+                    <span>{vote_average}</span>
+                  </div>
+                  <button onClick={() => this.handleFavorite(id)} className={favoriteStatus}>
+                    <i class="fas fa-thumbs-up"></i>
                   </button>
                 </div>
                 <div className="Info-Copy">
