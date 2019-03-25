@@ -1,21 +1,10 @@
-.Movies {
+.Genre-Movies {
   width: 100%;
   position: relative;
   box-sizing: border-box;
   overflow-x: hidden;
 
-  &:after {
-
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background: #ffffff26;
-    top: 0px;
-    padding: 1em;
-    box-sizing: border-box;
-  }
-
-  .Movies-Title {
+  .Genre-Movies-Title {
     position: absolute;
     font-size: 9em;
     top: 15%;
@@ -31,7 +20,7 @@
     transform: rotate(90deg);
   }
 
-  .Movies-Display {
+  .Genre-Movies-Display {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -46,6 +35,13 @@
       text-decoration: none;
       width: 48%;
       padding: 1%;
+      transition: all .5s ease;
+      opacity: 1;
+      cursor: pointer;
+
+      &:hover {
+        opacity: .5;
+      }
 
       .genre-image {
         display: block;
@@ -56,9 +52,24 @@
         background-position: top-center;
         background-repeat: no-repeat;
         display: flex;
+        flex-direction: column;
+        justify-content: center;
         align-items: center;
         height: 175px;
         box-shadow: 0px 2px 10px 3px #00000017;
+
+        &:before {
+          content: "";
+          width: 100%;
+          height: 100%;
+          border-radius: 3px;
+          position: absolute;
+          background: linear-gradient(to bottom, rgba(0, 15, 255, 0) 0%, #755e0b2e 100%);
+          top: 0px;
+          padding: 1em;
+          box-sizing: border-box;
+          z-index: 1;
+        }
 
         &:after {
           content: "";
@@ -66,23 +77,182 @@
           height: 100%;
           border-radius: 3px;
           position: absolute;
-          background: #ffffff26;
+          background: #67676778;
           top: 0px;
           padding: 1em;
           box-sizing: border-box;
+          z-index: 1;
         }
 
         h3 {
-          margin:0;
+          z-index: 9;
+          margin: 0;
           width: 100%;
-          padding: 1em;
           text-align: center;
           color: #fff;
+          font-size: 2em;
+          text-transform: unset;
+          letter-spacing: .05em;
+          font-family: "Abel", sans-serif;
+          box-sizing: border-box;
+          text-shadow: 2px 2px 5px #231f20;
           font-family: $font-Abel;
-          font-size: 1.3em;
+        }
+
+        p {
+          padding: 1em;
+          z-index: 9;
+          margin: 0;
+          color: #fff;
+          font-family: $font-copy;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          max-width: 80%;
+          font-size: .9em;
+          font-weight: 100;
+          letter-spacing: .03em;
+          text-shadow: 2px 2px 5px #231f20;
+          box-sizing: border-box;
         }
       }
     }
+  }
+}
+
+.All-Movies {
+  position: relative;
+  padding: 2em;
+
+  .All-Movies-Title {
+    position: absolute;
+    top: .6em;
+    font-size: 9em;
+    right: 0.1em;
+    line-height: 0;
+    text-transform: uppercase;
+    color: #7b7b7b;
+    mix-blend-mode: difference;
+    letter-spacing: .05em;
+    margin: 0;
+    font-family: $font-Abel;
+  }
+
+  .All-Movies-Display {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    .allMovies-column {
+      display: flex;
+      flex-direction: column;
+
+      h4.Movies-SubTitle {
+        position: relative;
+        color:#6f6f6f;
+        font-family: $font-Sans;
+        font-size: 1.2em;
+        font-weight: 500;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+        margin: 0;
+        line-height: 2;
+        padding-top: 1em;
+        mix-blend-mode: saturation;
+      }
+
+      .allMovies-row {
+        overflow-x: scroll;
+        width: 100%;
+        white-space: nowrap;
+        height: 150px;
+        position: relative;
+
+        &::after {
+          content: '';
+          position: absolute;
+          right: 0px;
+          top:0px;
+          height: 100%;
+          width: 50px;
+          background: linear-gradient(to left, #231f20 0%, rgba(125, 185, 232, 0) 100%);
+          z-index: 9;
+        }
+
+        a.allMovie-container {
+          display: inline-block;
+          width: 20%;
+          margin-right: .4em;
+          text-decoration: none;
+          height: 100%;
+          opacity: 1;
+          transition: all .5s ease;
+
+          &:hover {
+            opacity: .5;
+          }
+
+          .allMovie-image {
+            border-radius: 2px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            box-shadow: 0px 2px 10px 3px #00000017;
+
+
+            &:before {
+              content: "";
+              width: 100%;
+              height: 100%;
+              border-radius: 3px;
+              position: absolute;
+              background: linear-gradient(to bottom, rgba(0, 15, 255, 0) 0%, #755e0b2e 100%);
+              top: 0px;
+              padding: 1em;
+              box-sizing: border-box;
+              z-index: 1;
+            }
+
+            &:after {
+              content: "";
+              width: 100%;
+              height: 100%;
+              border-radius: 3px;
+              position: absolute;
+              background: #67676778;
+              top: 0px;
+              padding: 1em;
+              box-sizing: border-box;
+              z-index: 1;
+            }
+
+            h3 {
+              z-index: 9;
+              margin: 0;
+              width: 100%;
+              padding: 1em;
+              text-align: center;
+              color: #fff;
+              white-space: normal;
+              font-size: 1.25em;
+              position: relative;
+              top: 1em;
+              letter-spacing: .05em;
+              box-sizing: border-box;
+              text-shadow: 2px 2px 5px #231f20;
+              font-family: $font-Abel;
+            }
+          }
+        }
+      }
+    }
+
   }
 
 }

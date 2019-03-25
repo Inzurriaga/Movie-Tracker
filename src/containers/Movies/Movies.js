@@ -111,6 +111,7 @@ export class Movies extends Component {
                 <Link className="genre-container" key={movie.id} to={`/movies/${movie.id}`}>
                   <div className="genre-image" style={backgroundImage}>
                     <h3>{movie.title}</h3>
+                    <p>{movie.overview}</p>
                   </div>
                 </Link>
             )
@@ -118,28 +119,42 @@ export class Movies extends Component {
       } else if (this.props.id === "allMovies"){
         moviesToRender = moviesToSave.map((row, index) => {
           return (
-            <div>
-              {movieGenreTitles[index]}
-              {row.map(movie => {
-                      return (
-                          <Link key={movie.id} to={`/movies/${movie.id}`}>
-                              {movie.title}
-                          </Link>
-                      )
-          })}
+            <div key={index} className="allMovies-column">
+              <h4 className="Movies-SubTitle">{movieGenreTitles[index]} Movies</h4>
+                <div className="allMovies-row">
+                {
+                  row.map(movie => {
+                    let backgroundImage = {backgroundImage: `url( http://image.tmdb.org/t/p/w500${movie.backdrop_path})`}
+                    return (
+                        <Link className="allMovie-container" key={movie.id} to={`/movies/${movie.id}`}>
+                          <div className="allMovie-image" style={backgroundImage}>
+                            <h3>{movie.title}</h3>
+                          </div>
+                        </Link>
+                    )
+              })}
+              </div>
             </div>
           )
         })
       }
 
-      return (
-          <div className="Movies">
-            <h2 className="Movies-Title">{this.props.title}</h2>
-            <div className="Movies-Display">
-              {moviesToRender}
+      if(this.props.id === 'genres' || this.props.id === 'favorites') {
+        return (
+            <div className="Genre-Movies">
+                <h2 className="Genre-Movies-Title">{this.props.title}</h2>
+                <div className="Genre-Movies-Display">{moviesToRender}</div>
             </div>
-          </div>
-      )
+        )
+      } else {
+        return (
+            <div className="All-Movies">
+                <h2 className="All-Movies-Title">{this.props.title}</h2>
+                <div className="All-Movies-Display">{moviesToRender}</div>
+            </div>
+        )
+      }
+
   }
 }
 

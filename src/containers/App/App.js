@@ -58,10 +58,10 @@ export class App extends Component {
             }} />
           }
           <Route exact path="/movies/allMovies" render={() => {
-            return <Movies key="allMovies" id="allMovies" />
+            return <Movies key="allMovies" title="All Movies" id="allMovies" />
           }} />
           <Route exact path="/favorites" render={() => {
-            return <Movies key="favorites" id="favorites" />
+            return <Movies key="favorites" title="Favorites" id="favorites" />
           }} />
           {
             this.props.movies.length &&
