@@ -6,6 +6,8 @@ export const favorites = (state = [], action) => {
       return action.favLogin.map(id => id.movie_id)
     case 'REMOVE_FAVORITE':
       return state.filter(fav => fav !== action.favorite)
+    case 'SIGN_OUT_FAVORITES':
+      return state = []
     default:
       return state
   }

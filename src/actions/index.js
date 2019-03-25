@@ -9,13 +9,11 @@ export const user = (userInfo) => ({
   userInfo
 })
 
-
 export const getGenres = (genre) => ({
   type: "GET_GENRES",
   genre
 })
 
-  
 export const addFavorite = (favorite) => ({
   type: 'ADD_FAVORITES',
   favorite
@@ -29,4 +27,14 @@ export const initialFavorites = (favLogin) => ({
 export const removeFavorite = (favorite) => ({
   type: 'REMOVE_FAVORITE',
   favorite
+})
+
+export const signOutUser = (signOut) => ({
+  type: 'SIGN_OUT',
+  signOut
+})
+
+export const signOutFavorites = (favorites) => ({
+  type: 'SIGN_OUT_FAVORITES',
+  favorites
 })

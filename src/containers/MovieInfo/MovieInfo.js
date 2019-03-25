@@ -47,9 +47,17 @@ class MovieInfo extends Component {
       this.props.removeFavorite(id);
     }
 
-
+    isEmpty = (obj) => {
+      for(var key in obj) {
+          if(obj.hasOwnProperty(key))
+              return true;
+      }
+      return false;
+    }
+ 
     render = () => {
         const { id, title, overview, backdrop_path, poster_path, vote_average, release_date, videos } = this.state.currentMovie;
+        const score = vote_average * 10
         const backgroundCover = { backgroundImage:`url(http://image.tmdb.org/t/p/original${backdrop_path})`};
         let favoriteStatus = this.props.favorites.includes(id) ? 'Favorite_True' : 'Favorite_False';
         if(typeof id === 'number') {
@@ -58,23 +66,19 @@ class MovieInfo extends Component {
           return(
             <div className="MovieInfo" style={backgroundCover}>
               <section className="MovieInfo-Poster">
+                { this.isEmpty(this.props.user) &&
+                  <button onClick={() => this.handleFavorite(id)} className={favoriteStatus}>
+                    <i className="fas fa-star"></i>
+                  </button>
+                }
                 <img src={`http://image.tmdb.org/t/p/original${poster_path}`} alt="Movie Poster" />
               </section>
               <section className="MovieInfo-Copy">
                 <div className="Info-Title">
                   <h3>{title} <span>({release_date.substring(0,4)})</span></h3>
                 </div>
-                <div className="Info-Extras">
-                  <div>
-                    <i className="far fa-star"></i>
-                    <span>{vote_average}</span>
-                  </div>
-                  <button onClick={() => this.handleFavorite(id)} className={favoriteStatus}>
-                    <i class="fas fa-thumbs-up"></i>
-                  </button>
-                </div>
                 <div className="Info-Copy">
-                  <h5>Overview</h5>
+                  <h5>Overview - <span className="Info-Score">(Voter Average {score}%)</span></h5>
                   <p>{overview}</p>
                 </div>
                 <div className="MovieInfo-Trailer">
