@@ -18,8 +18,8 @@ class MainPage extends Component {
             <div>im loading</div>
           }
           <div className="bottom-option">
-            <Link to="/blank" className="theater-box">Movies in theater</Link>
-            <Link to="/blank" className="theater-box">Coming out Soon</Link>
+            <Link to="/InTheater" className="theater-box">Movies in theater</Link>
+            <Link to="/upcoming" className="theater-box">Coming out Soon</Link>
           </div>
         </div>
         <div className="right-option">

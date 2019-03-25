@@ -63,6 +63,12 @@ export class App extends Component {
           <Route exact path="/favorites" render={() => {
             return <Movies key="favorites" id="favorites" />
           }} />
+          <Route exact path="/InTheater" render={() => {
+            return <Movies key="favorites" id="inTheater" />
+          }} /> 
+           <Route exact path="/upcoming" render={() => {
+            return <Movies key="upcoming" id="upcoming" />
+          }} /> 
           {
             this.props.movies.length &&
             <Route exact path="/movies/:id" render={({match}) => {
