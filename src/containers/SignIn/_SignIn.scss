@@ -1,14 +1,15 @@
 .SignIn-Content {
   position:fixed;
-  background: #231f20;
+  background: #2f2f2f;
   width: 100%;
-  max-width: 400px;
+  max-width: 350px;
   border-radius: 5px;
   height: auto;
-  padding: 1.5em;
+  padding: 0 1.5em;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
+  box-shadow: 0px 2px 10px 3px #0000006b;
 
   .Modal-Close {
 
@@ -19,30 +20,54 @@
       background: none;
       border: none;
       outline: none;
+      color: #a7a7a7;
+      background: #3e3e3e;
       font-size: 1.1em;
       line-height: 1.5;
       cursor: pointer;
+      transition: all .5s ease;
+      border-top-right-radius: 5px;
+
+      &:hover {
+        color: #d2d2d2;
+        background: #4e4e4e;
+      }
     }
   }
 
 
   .Modal-Header {
-    padding-bottom: 1em;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
     display: flex;
     width: 100%;
     box-sizing: border-box;
+    justify-content: center;
 
     .btnChoice {
-      width: 50%;
+      width: 40%;
+      padding: .5em;
+      font-size: 1em;
       outline: none;
-      font-family: $font-title;
+      text-transform: uppercase;
+      font-family: $font-Sans;
+      border:none;
+      cursor: pointer;
+      transition: all .5s ease;
 
       &.choice-active {
-        background:#fff;
+        background: #272635;
+        color: #505050;
+        box-shadow: 0px 0px 4px 0px #00000070;
+
+        &:hover {
+          color: #505050;
+        }
       }
 
       &.choice-inactive {
-        background:#cccccc;
+        background: #231f20;
+        color: #505050;
         pointer-events: none;
       }
 
@@ -51,18 +76,19 @@
 
 
   .Modal-Body {
-
+    padding-bottom: 1.5em;
     form {
       display: flex;
       flex-direction: column;
 
       label {
-        font-family: $font-copy;
-        color: #fff;
+        font-family: $font-Sans;
+        color: #7d7d7d;
         font-weight: 100;
         font-size: .9em;
+        letter-spacing: .1em;
         padding-bottom: .4em;
-        letter-spacing: .04em;
+        outline: none;
       }
 
       input {
@@ -71,14 +97,25 @@
       }
 
       button {
-        font-family: $font-title;
-        background: #1c1a3a;
-        color: #fff;
+        margin-top: 0.5em;
+        font-family: $font-Sans;
+        background: #272635;
+        color: #dadada;
+        text-transform: uppercase;
+        box-shadow: 0px 0px 4px 0px #00000070;
         font-weight: 100;
         border: none;
         outline: none;
         padding: .5em 0;
+        border-radius: 2px;
         box-shadow: 0px 1px 4px 0px black;
+        cursor: pointer;
+        transition: all .5s ease;
+
+        &:hover {
+          background: #888333;
+          color: #dedede;
+        }
       }
 
     }

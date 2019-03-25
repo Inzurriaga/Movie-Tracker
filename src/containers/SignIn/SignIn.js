@@ -61,6 +61,7 @@ class SignIn extends Component {
     })
   }
 
+
   render(){
     const btnActive = 'btnChoice choice-active';
     const btnInactive = 'btnChoice choice-inactive';
@@ -71,11 +72,11 @@ class SignIn extends Component {
           <button className="closeBtn" onClick={this.props.hideModal}>X</button>
         </section>
         <section className="Modal-Header">
-          <button className={newUser ? btnInactive : btnActive} onClick={this.handleSignSwitch}>Create Account</button>
-          <button className={newUser ? btnActive : btnInactive} onClick={this.handleSignSwitch}>Sign In</button>
+          <button className={newUser ? btnInactive : btnActive} onClick={this.handleSignSwitch}>Sign In</button>
+          <button className={newUser ? btnActive : btnInactive} onClick={this.handleSignSwitch}>Create Account</button>
         </section>
         <section className="Modal-Body">
-        { this.state.newUser ?
+        { !this.state.newUser ?
             <form onSubmit={this.createAccount}>
               <label>Name</label>
               <input onChange={this.userInput} type="text" className="name"/>
