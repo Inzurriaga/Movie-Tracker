@@ -47,6 +47,7 @@ class MovieInfo extends Component {
       this.props.removeFavorite(id);
     }
 
+    // need utilities file for multiple methods
     isEmpty = (obj) => {
       for(var key in obj) {
           if(obj.hasOwnProperty(key))
@@ -54,7 +55,7 @@ class MovieInfo extends Component {
       }
       return false;
     }
- 
+
     render = () => {
         const { id, title, overview, backdrop_path, poster_path, vote_average, release_date, videos } = this.state.currentMovie;
         const score = vote_average * 10

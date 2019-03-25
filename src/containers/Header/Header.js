@@ -26,6 +26,7 @@ class Header extends Component {
     console.log('redux', this.props);
   }
 
+  // need utilities file for multiple methods
   isEmpty = (obj) => {
     for(var key in obj) {
         if(obj.hasOwnProperty(key))
@@ -40,7 +41,7 @@ class Header extends Component {
       <div className="Header">
         <nav className="Header-Nav">
           <Link key="Home" to="/"><h2>Home</h2></Link>
-          <Link key="All_Movies" to="/movies/allMovies"><h2>Movies</h2></Link>
+          <Link key="All_Movies" to="/movies/allMovies"><h2>All Genres</h2></Link>
           <Link key="Favorites" to="/favorites"><h2>Favorites</h2></Link>
         </nav>
         <section className="LoginBtn">
