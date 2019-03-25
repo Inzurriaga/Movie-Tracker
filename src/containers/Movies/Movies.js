@@ -38,7 +38,8 @@ export class Movies extends Component {
 
   fetchUpComing = async () => {
     const url = "http://api.themoviedb.org/3/movie/upcoming?"
-    const unresolvedTheater = await fetchMovies(url, '')
+    const endUrl = "&region=US"
+    const unresolvedTheater = await fetchMovies(url, endUrl)
     this.setState({
       moviesToSave: unresolvedTheater.results
     })
