@@ -51,17 +51,17 @@ export class App extends Component {
           <Route exact path="/" component={MainPage} />
           {
             this.props.genres.length &&
-            <Route exact path="/movies/genre/:id" render={({match}) => {
-              const { id } = match.params
+            <Route exact path="/movies/:title/:id" render={({match}) => {
+              const { id, title } = match.params
               const genre = this.props.genres.find((genre, index) => index === parseInt(id))
-              return <Movies id="genres" genreInfo={genre}/>
+              return <Movies id="genres" title={title} genreInfo={genre}/>
             }} />
           }
           <Route exact path="/movies/allMovies" render={() => {
-            return <Movies key="allMovies" id="allMovies" />
+            return <Movies key="allMovies" title="All Movies" id="allMovies" />
           }} />
           <Route exact path="/favorites" render={() => {
-            return <Movies key="favorites" id="favorites" />
+            return <Movies key="favorites" title="Favorites" id="favorites" />
           }} />
           {
             this.props.movies.length &&
@@ -71,7 +71,6 @@ export class App extends Component {
             }} />
           }
         </Switch>
-        <Footer />
       </div>
     );
   }
