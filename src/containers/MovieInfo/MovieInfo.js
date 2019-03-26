@@ -101,9 +101,9 @@ export const mapStateToProps = (state) => ({
   favorites: state.favorites
 })
 
-export const mapDispstchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   addFavorite: (favorite) => dispatch(addFavorite(favorite)),
   removeFavorite: (favorite) => dispatch(removeFavorite(favorite))
 })
 
-export default connect(mapStateToProps, mapDispstchToProps)(MovieInfo);
+export default connect(mapStateToProps, mapDispatchToProps)(MovieInfo);

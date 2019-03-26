@@ -36,6 +36,24 @@
   "jest": {
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
+    ],
+    "collectCoverageFrom": [
+      "src/actions/*.js",
+      "src/api/*.js",
+      "src/containers/App/*.js",
+      "src/containers/GenreBox/*.js",
+      "src/containers/Header/*.js",
+      "src/containers/MainPage/*.js",
+      "src/containers/Movies/*.js",
+      "src/containers/SignIn/*.js",
+      "src/containers/SlideShow/*.js",
+      "src/containers/MovieInfo/*.js",
+      "src/reducers/*.js",
+      "src/actions/*.js",
+      "!src/reducers/index.js",
+      "!src/index.js",
+      "!src/setupTest.js",
+      "!src/serviceWorker.js"
     ]
   }
 }
