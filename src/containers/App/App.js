@@ -41,6 +41,7 @@ export class App extends Component {
   setGenres = (response) => {
     const genres = response.filter((genre, index) => index > 0 )
     this.props.getGenres(genres)
+    console.log(this.props.genres);
   }
 
   render() {
@@ -65,10 +66,10 @@ export class App extends Component {
           }} />
           <Route exact path="/InTheater" render={() => {
             return <Movies key="favorites" id="inTheater" />
-          }} /> 
+          }} />
            <Route exact path="/upcoming" render={() => {
             return <Movies key="upcoming" id="upcoming" />
-          }} /> 
+          }} />
           {
             this.props.movies.length &&
             <Route exact path="/movies/:id" render={({match}) => {

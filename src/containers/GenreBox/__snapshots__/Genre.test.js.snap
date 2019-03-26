@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GenreBox GenreBox Component should match the snapshot 1`] = `
+<div
+  className="Genre-Display"
+>
+  <Link
+    className="genre-box"
+    key="0"
+    style={
+      Object {
+        "backgroundImage": "url( http://image.tmdb.org/t/p/original/w2PMyoyLU22YvrGK3smVM9fW1jj.jpg)",
+      }
+    }
+    to="/Movies/Action/0"
+  >
+    <h3>
+      Action
+    </h3>
+  </Link>
+</div>
+`;

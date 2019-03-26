@@ -1,0 +1,262 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Header Component should change its show state when hideModal is clicked 1`] = `
+<div
+  className="Header"
+>
+  <nav
+    className="Header-Nav"
+  >
+    <Link
+      key="Home"
+      to="/"
+    >
+      <h2>
+        Home
+      </h2>
+    </Link>
+    <Link
+      key="All_Movies"
+      to="/movies/allMovies"
+    >
+      <h2>
+        All Genres
+      </h2>
+    </Link>
+    <Link
+      key="Favorites"
+      to="/favorites"
+    >
+      <h2>
+        Favorites
+      </h2>
+    </Link>
+  </nav>
+  <section
+    className="LoginBtn"
+  >
+    <div
+      className="User-Info-Box"
+    >
+      <h4
+        className="User-Info"
+      >
+        Sign In
+      </h4>
+      <button
+        onClick={[Function]}
+        type="button"
+      >
+        <i
+          className="fas fa-user"
+        />
+      </button>
+    </div>
+  </section>
+  <section
+    className="Modal-Container modal-hide"
+  >
+    <Connect(SignIn)
+      className="SignIn"
+      hideModal={[Function]}
+      show={false}
+    />
+  </section>
+</div>
+`;
+
+exports[`Header Header Component should change its show state when showModal is clicked 1`] = `
+<div
+  className="Header"
+>
+  <nav
+    className="Header-Nav"
+  >
+    <Link
+      key="Home"
+      to="/"
+    >
+      <h2>
+        Home
+      </h2>
+    </Link>
+    <Link
+      key="All_Movies"
+      to="/movies/allMovies"
+    >
+      <h2>
+        All Genres
+      </h2>
+    </Link>
+    <Link
+      key="Favorites"
+      to="/favorites"
+    >
+      <h2>
+        Favorites
+      </h2>
+    </Link>
+  </nav>
+  <section
+    className="LoginBtn"
+  >
+    <div
+      className="User-Info-Box"
+    >
+      <h4
+        className="User-Info"
+      >
+        Sign In
+      </h4>
+      <button
+        onClick={[Function]}
+        type="button"
+      >
+        <i
+          className="fas fa-user"
+        />
+      </button>
+    </div>
+  </section>
+  <section
+    className="Modal-Container modal-show"
+  >
+    <Connect(SignIn)
+      className="SignIn"
+      hideModal={[Function]}
+      show={true}
+    />
+  </section>
+</div>
+`;
+
+exports[`Header Header Component should change render and show a welcome user when a user has logged in 1`] = `
+<div
+  className="Header"
+>
+  <nav
+    className="Header-Nav"
+  >
+    <Link
+      key="Home"
+      to="/"
+    >
+      <h2>
+        Home
+      </h2>
+    </Link>
+    <Link
+      key="All_Movies"
+      to="/movies/allMovies"
+    >
+      <h2>
+        All Genres
+      </h2>
+    </Link>
+    <Link
+      key="Favorites"
+      to="/favorites"
+    >
+      <h2>
+        Favorites
+      </h2>
+    </Link>
+  </nav>
+  <section
+    className="LoginBtn"
+  >
+    <div
+      className="User-Info-Box"
+    >
+      <h4
+        className="User-Info"
+      >
+        Welcome 
+        a
+      </h4>
+      <button
+        onClick={[Function]}
+        type="button"
+      >
+        <i
+          className="fas fa-sign-out-alt"
+        />
+      </button>
+    </div>
+  </section>
+  <section
+    className="Modal-Container modal-hide"
+  >
+    <Connect(SignIn)
+      className="SignIn"
+      hideModal={[Function]}
+      show={false}
+    />
+  </section>
+</div>
+`;
+
+exports[`Header Header Component should match the snapshot 1`] = `
+<div
+  className="Header"
+>
+  <nav
+    className="Header-Nav"
+  >
+    <Link
+      key="Home"
+      to="/"
+    >
+      <h2>
+        Home
+      </h2>
+    </Link>
+    <Link
+      key="All_Movies"
+      to="/movies/allMovies"
+    >
+      <h2>
+        All Genres
+      </h2>
+    </Link>
+    <Link
+      key="Favorites"
+      to="/favorites"
+    >
+      <h2>
+        Favorites
+      </h2>
+    </Link>
+  </nav>
+  <section
+    className="LoginBtn"
+  >
+    <div
+      className="User-Info-Box"
+    >
+      <h4
+        className="User-Info"
+      >
+        Sign In
+      </h4>
+      <button
+        onClick={[Function]}
+        type="button"
+      >
+        <i
+          className="fas fa-user"
+        />
+      </button>
+    </div>
+  </section>
+  <section
+    className="Modal-Container modal-hide"
+  >
+    <Connect(SignIn)
+      className="SignIn"
+      hideModal={[Function]}
+      show={false}
+    />
+  </section>
+</div>
+`;

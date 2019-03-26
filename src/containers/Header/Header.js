@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signOutUser, signOutFavorites } from '../../actions';
 
-class Header extends Component {
-  constructor() {
-    super();
+export class Header extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
       show: false
     }
@@ -23,7 +23,6 @@ class Header extends Component {
   signOut = () => {
     this.props.signOutUser();
     this.props.signOutFavorites();
-    console.log('redux', this.props);
   }
 
   // need utilities file for multiple methods
@@ -36,6 +35,7 @@ class Header extends Component {
   }
 
   render() {
+    console.log(this.props.user);
     const showHideClassName = this.state.show ? "Modal-Container modal-show" : "Modal-Container modal-hide";
     return (
       <div className="Header">
