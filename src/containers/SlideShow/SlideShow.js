@@ -55,7 +55,7 @@ export class SlideShow extends Component{
             if(index === this.state.slidesPosition) {
                 return (
                     <Link className="slide" key={slide.id} to={`/movies/${slide.id}`}>
-                        <div className="slide-image" style={backgroundImage}>
+                        <div className="slide-image" style={backgroundImage} id={slide.id}>
                             <h3>{slide.title}</h3>
                         </div>
                     </Link>

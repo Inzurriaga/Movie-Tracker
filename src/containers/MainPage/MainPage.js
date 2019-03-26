@@ -3,11 +3,14 @@ import { connect } from 'react-redux';
 import { Link } from "react-router-dom"
 import SlideShow from "../SlideShow/SlideShow";
 import GenreBox from "../GenreBox/GenreBox"
-
+import inTheaters from'../../images/theather.jpg';
+import comingSoon from'../../images/comingSoon.jpg';
 
 export class MainPage extends Component {
   render() {
     const { movies } = this.props;
+    const theater={backgroundImage: `url(${inTheaters})`}
+    const soon={backgroundImage: `url(${comingSoon})`}
     return (
       <div className="MainPage">
         <div className="left-option">
@@ -17,8 +20,8 @@ export class MainPage extends Component {
             <div>im loading</div>
           }
           <div className="bottom-option">
-            <Link to="/InTheater" className="theater-box">Movies in theater</Link>
-            <Link to="/upcoming" className="theater-box">Coming out Soon</Link>
+            <Link to="/InTheater" style={theater} className="theater-box">Movies in theater</Link>
+            <Link to="/upcoming" style={soon} className="theater-box">Coming out Soon</Link>
           </div>
         </div>
         <div className="right-option">
