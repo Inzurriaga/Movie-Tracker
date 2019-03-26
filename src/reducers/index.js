@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
-import { getDiscover } from './getDiscover';
+import { getDiscoverReducer } from './getDiscover';
 import { getGenres } from './getGenres';
 import { favorites } from './favorites';
-import { user } from "./user";
+import { userReducer } from "./user";
 
 export const rootReducer = combineReducers({
-  movies: getDiscover,
-  user: user,
+  movies: getDiscoverReducer,
+  user: userReducer,
   genres: getGenres,
   favorites: favorites,
 });

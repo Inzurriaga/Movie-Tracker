@@ -35,7 +35,6 @@ export class Header extends Component {
   }
 
   render() {
-    console.log(this.props.user);
     const showHideClassName = this.state.show ? "Modal-Container modal-show" : "Modal-Container modal-hide";
     return (
       <div className="Header">

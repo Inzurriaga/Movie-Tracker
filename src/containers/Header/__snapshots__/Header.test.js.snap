@@ -23,14 +23,6 @@ exports[`Header Header Component should change its show state when hideModal is 
         All Genres
       </h2>
     </Link>
-    <Link
-      key="Favorites"
-      to="/favorites"
-    >
-      <h2>
-        Favorites
-      </h2>
-    </Link>
   </nav>
   <section
     className="LoginBtn"
@@ -86,14 +78,6 @@ exports[`Header Header Component should change its show state when showModal is 
     >
       <h2>
         All Genres
-      </h2>
-    </Link>
-    <Link
-      key="Favorites"
-      to="/favorites"
-    >
-      <h2>
-        Favorites
       </h2>
     </Link>
   </nav>
@@ -174,14 +158,15 @@ exports[`Header Header Component should change render and show a welcome user wh
         Welcome 
         a
       </h4>
-      <button
+      <NavLink
         onClick={[Function]}
+        to="/"
         type="button"
       >
         <i
           className="fas fa-sign-out-alt"
         />
-      </button>
+      </NavLink>
     </div>
   </section>
   <section
@@ -217,14 +202,6 @@ exports[`Header Header Component should match the snapshot 1`] = `
     >
       <h2>
         All Genres
-      </h2>
-    </Link>
-    <Link
-      key="Favorites"
-      to="/favorites"
-    >
-      <h2>
-        Favorites
       </h2>
     </Link>
   </nav>
