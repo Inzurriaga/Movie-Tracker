@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { fetchMovies } from '../../api'
-import Masonry from 'react-masonry-component';
-
 
 export class Movies extends Component {
   constructor() {
