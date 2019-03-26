@@ -20,12 +20,12 @@ export class SignIn extends Component {
   handleLogin = async (url, method, body) => {
     try {
       const response = await postFetch(url, method, body);
-      if(response.status === 'success'){
-        this.props.user(response);
-      }
+      const retrievedData = await response.json()
+      this.props.user(retrievedData.data);
     } catch (error) {
-      console.log('in error sate');
-      // this.setState({ error: 'not WOrking' })
+      this.setState({
+        error: "not working"
+      })
     }
   }
 
@@ -63,6 +63,7 @@ export class SignIn extends Component {
   handleSignSwitch = () => {
     this.setState({
       newUser: !this.state.newUser,
+      error: ''
     })
   }
 
@@ -89,6 +90,9 @@ export class SignIn extends Component {
               <input onChange={this.userInput} type="text" className="email"/>
               <label>Password</label>
               <input onChange={this.userInput} type="text" className="password"/>
+              { this.state.error === "not working" && 
+              <p>Email has already been used</p>
+              }
               <button type="submit">Create Account</button>
             </form>
           :
@@ -97,6 +101,9 @@ export class SignIn extends Component {
             <input onChange={this.userInput} type="text" className="email"/>
             <label>Password</label>
             <input onChange={this.userInput} type="text" className="password"/>
+            { this.state.error === "not working" && 
+              <p>Email and Password do not match</p>
+            }
             <button type="submit">Sign In</button>
           </form>
         }

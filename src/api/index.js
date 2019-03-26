@@ -24,8 +24,7 @@ const deleteSettings = () => ({
 
 const postFetch = async (url, method, body) => {
   const response = await fetch(`${backEndUrl}${url}`, settings(method, body))
-  const retrievedData = await response.json()
-  return retrievedData.data;
+  return response;
 }
 
 const getFetch = async (url) => {

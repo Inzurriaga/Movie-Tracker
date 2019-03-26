@@ -26,7 +26,7 @@ describe("Movies", () => {
             wrapper.instance().setAllMovies(mockdata)
             expect(wrapper.state("moviesToSave")).toEqual(mockdata)
         })
-        it("", () => {
+        it("should change the state to the moviesToSave when setAllGenres is invoke", () => {
             expect(wrapper.state("moviesToSave")).toEqual([])
             const mockdata = [{genre: "horror"}, {genre: "action"}]
             wrapper.instance().setAllGenres(mockdata)
