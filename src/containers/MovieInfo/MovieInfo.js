@@ -99,7 +99,7 @@ export class MovieInfo extends Component {
 MovieInfo.propTypes = {
   user: PropTypes.object,
   favorites: PropTypes.array.isRequired,
-  movieID: PropTypes.number.isRequired,
+  movieID: PropTypes.string.isRequired,
   addFavorite: PropTypes.func,
   removeFavorite: PropTypes.func
 }

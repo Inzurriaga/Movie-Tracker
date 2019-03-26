@@ -17,6 +17,8 @@
     box-shadow: 0px 2px 10px 3px #00000017;
     cursor: pointer;
     border-radius: 3px;
+    background-repeat: no-repeat;
+    background-size: cover;
 
     &:hover {
       &:before {
