@@ -24,8 +24,8 @@
         justify-content: center;
         background: #231f20;
         width: 50%;
-
-
+        background-repeat: no-repeat;
+        background-size: cover;
         font-size: 1.2em;
         font-weight: 100;
         letter-spacing: 0.04em;
@@ -33,13 +33,10 @@
         text-shadow: 2px 2px 5px black;
         font-family: $font-Abel;
         color: white;
-
-        background-size: contain;
         background-position: top center;
         transition: all .5s ease;
         box-shadow: 0px 2px 10px 3px #00000017;
         cursor: pointer;
-
         border-radius: 5px;
 
         &:first-child {
