@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { ReactComponent as Arrow } from "../../images/arrow.svg"
 import { Link } from "react-router-dom"
+import PropTypes from "prop-types"
 import { connect } from "react-redux"
 
 export class SlideShow extends Component{
@@ -78,6 +79,10 @@ export class SlideShow extends Component{
     componentWillUnmount(){
         clearInterval(this.state.autoSlides)
     }
+}
+
+SlideShow.propTypes = {
+    movies: PropTypes.array.isRequired,
 }
 
 export const mapStateToProps = (state) => ({
