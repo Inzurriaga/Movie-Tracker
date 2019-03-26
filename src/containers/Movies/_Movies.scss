@@ -162,10 +162,13 @@
 
       .allMovies-row {
         overflow-x: scroll;
+        overflow-y: hidden;
         width: 100%;
         white-space: nowrap;
         height: 170px;
         position: relative;
+        padding: 20px 0px;
+        z-index: 5;
 
         &::after {
           content: '';
@@ -186,9 +189,12 @@
           height: 100%;
           opacity: 1;
           transition: all .5s ease;
+          position: relative;
 
           &:hover {
-            opacity: .7;
+            transform: scale(1.2);
+            z-index: 10;
+            margin: 0px 40px;
           }
 
           .allMovie-image {
