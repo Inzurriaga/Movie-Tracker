@@ -50,6 +50,7 @@ export class SignIn extends Component {
   userInput = (event) => {
     const value = event.target.value
     const key = event.target.classList
+    console.log(key);
     this.setState({
       [key]: value
     })
@@ -63,6 +64,7 @@ export class SignIn extends Component {
 
 
   render(){
+    console.log(this.props);
     const btnActive = 'btnChoice choice-active';
     const btnInactive = 'btnChoice choice-inactive';
     const { newUser } = this.state;
@@ -77,7 +79,7 @@ export class SignIn extends Component {
         </section>
         <section className="Modal-Body">
         { !this.state.newUser ?
-            <form onSubmit={this.createAccount}>
+            <form onSubmit={this.createAccount} className="CreateForm">
               <label>Name</label>
               <input onChange={this.userInput} type="text" className="name"/>
               <label>Email</label>
@@ -87,7 +89,7 @@ export class SignIn extends Component {
               <button type="submit">Create Account</button>
             </form>
           :
-          <form onSubmit={this.signIn}>
+          <form onSubmit={this.signIn} className="SignForm">
             <label>Email</label>
             <input onChange={this.userInput} type="text" className="email"/>
             <label>Password</label>
@@ -105,9 +107,9 @@ export const mapStateToProps = (state) => ({
   userInfo: state.user,
 })
 
-export const mapDispstchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   user: (userInfo) => dispatch(user(userInfo)),
   initialFavorites: (favorites) => dispatch(initialFavorites(favorites)),
 })
 
-export default connect(mapStateToProps, mapDispstchToProps)(SignIn);
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

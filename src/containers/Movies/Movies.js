@@ -155,7 +155,7 @@ export class Movies extends Component {
         })
       }
 
-      if(this.props.id === 'genres' || this.props.id === 'favorites') {
+      if(this.props.id === 'genres' || this.props.id === 'favorites' || this.props.id === 'upcoming' || this.props.id === 'inTheater') {
         return (
             <div className="Genre-Movies">
                 <h2 className="Genre-Movies-Title">{this.props.title}</h2>

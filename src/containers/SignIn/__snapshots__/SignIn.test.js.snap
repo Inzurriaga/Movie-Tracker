@@ -1,3 +1,127 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Sign In SignIn Component should match the snapshot 1`] = `undefined`;
+exports[`Sign In SignIn Component should match the snapshot 1`] = `
+<div
+  className="SignIn-Content"
+>
+  <section
+    className="Modal-Close"
+  >
+    <button
+      className="closeBtn"
+      onClick={[MockFunction]}
+    >
+      X
+    </button>
+  </section>
+  <section
+    className="Modal-Header"
+  >
+    <button
+      className="btnChoice choice-inactive"
+      onClick={[Function]}
+    >
+      Sign In
+    </button>
+    <button
+      className="btnChoice choice-active"
+      onClick={[Function]}
+    >
+      Create Account
+    </button>
+  </section>
+  <section
+    className="Modal-Body"
+  >
+    <form
+      className="SignForm"
+      onSubmit={[Function]}
+    >
+      <label>
+        Email
+      </label>
+      <input
+        className="email"
+        onChange={[Function]}
+        type="text"
+      />
+      <label>
+        Password
+      </label>
+      <input
+        className="password"
+        onChange={[Function]}
+        type="text"
+      />
+      <button
+        type="submit"
+      >
+        Sign In
+      </button>
+    </form>
+  </section>
+</div>
+`;
+
+exports[`Sign In SignIn Component should match the snapshot when newUser becomes false 1`] = `
+<div
+  className="SignIn-Content"
+>
+  <section
+    className="Modal-Close"
+  >
+    <button
+      className="closeBtn"
+      onClick={[MockFunction]}
+    >
+      X
+    </button>
+  </section>
+  <section
+    className="Modal-Header"
+  >
+    <button
+      className="btnChoice choice-inactive"
+      onClick={[Function]}
+    >
+      Sign In
+    </button>
+    <button
+      className="btnChoice choice-active"
+      onClick={[Function]}
+    >
+      Create Account
+    </button>
+  </section>
+  <section
+    className="Modal-Body"
+  >
+    <form
+      className="SignForm"
+      onSubmit={[Function]}
+    >
+      <label>
+        Email
+      </label>
+      <input
+        className="email"
+        onChange={[Function]}
+        type="text"
+      />
+      <label>
+        Password
+      </label>
+      <input
+        className="password"
+        onChange={[Function]}
+        type="text"
+      />
+      <button
+        type="submit"
+      >
+        Sign In
+      </button>
+    </form>
+  </section>
+</div>
+`;
