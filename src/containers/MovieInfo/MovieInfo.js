@@ -97,11 +97,11 @@ export class MovieInfo extends Component {
 }
 
 MovieInfo.propTypes = {
-  user: PropTypes.object.isRequired,
+  user: PropTypes.object,
   favorites: PropTypes.array.isRequired,
   movieID: PropTypes.number.isRequired,
-  addFavorite: PropTypes.func.isRequired,
-  removeFavorite: PropTypes.func.isRequired
+  addFavorite: PropTypes.func,
+  removeFavorite: PropTypes.func
 }
 
 export const mapStateToProps = (state) => ({

@@ -50,7 +50,6 @@ export class SignIn extends Component {
   userInput = (event) => {
     const value = event.target.value
     const key = event.target.classList
-    console.log(key);
     this.setState({
       [key]: value
     })
@@ -64,7 +63,6 @@ export class SignIn extends Component {
 
 
   render(){
-    console.log(this.props);
     const btnActive = 'btnChoice choice-active';
     const btnInactive = 'btnChoice choice-inactive';
     const { newUser } = this.state;
