@@ -88,8 +88,8 @@ export class App extends Component {
 App.propTypes = {
   movies: PropTypes.array.isRequired,
   genres: PropTypes.array.isRequired,
-  getDiscover: PropTypes.func.isRequired,
-  getGenres: PropTypes.func.isRequired
+  getDiscover: PropTypes.func,
+  getGenres: PropTypes.func
 }
 
 export const mapStateToProps = (state) => ({

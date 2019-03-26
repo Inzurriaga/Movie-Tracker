@@ -119,12 +119,11 @@ export class Movies extends Component {
   render() {
       const { moviesToSave, movieGenreTitles } = this.state;
       let moviesToRender = null;
-      console.log(this.props);
       if(!(this.props.id === "allMovies")) {
-        moviesToRender = moviesToSave.map(movie => {
+        moviesToRender = moviesToSave.map((movie, index) => {
             let backgroundImage = {backgroundImage: `url( http://image.tmdb.org/t/p/w1280${movie.backdrop_path})`}
             return (
-                <Link className="genre-container" key={movie.id} to={`/movies/${movie.id}`}>
+                <Link className="genre-container" key={index} to={`/movies/${movie.id}`}>
                   <div className="genre-image" style={backgroundImage}>
                     <h3>{movie.title}</h3>
                     <p>{movie.overview}</p>
@@ -177,9 +176,5 @@ export class Movies extends Component {
 export const mapStateToProps = (state) => ({
   favorites: state.favorites
 })
-
-
-
-
 
 export default connect(mapStateToProps)(Movies);

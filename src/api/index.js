@@ -36,13 +36,12 @@ const getFetch = async (url) => {
 
 const deleteFetch = async (url) => {
   const response = await fetch(`${backEndUrl}${url}`, deleteSettings())
-  console.log(response);
   const retrievedData = await response.json()
-  console.log(retrievedData);
+  return retrievedData
 }
 
 
 
 
 
-export { fetchMovies, postFetch, getFetch, deleteFetch }
+export { fetchMovies, postFetch, getFetch, deleteFetch, settings, deleteSettings }
