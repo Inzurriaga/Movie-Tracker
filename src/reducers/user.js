@@ -1,4 +1,4 @@
-export const user = (state = {}, action) => {
+export const userReducer = (state = {}, action) => {
   switch(action.type){
     case 'UPDATE_USER':
         return action.userInfo;

@@ -4,7 +4,7 @@ import { user, initialFavorites } from '../../actions'
 import { postFetch, getFetch } from '../../api'
 
 
-class SignIn extends Component {
+export class SignIn extends Component {
   constructor(props){
     super(props)
     this.state = {

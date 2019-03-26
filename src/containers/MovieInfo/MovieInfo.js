@@ -4,7 +4,7 @@ import { addFavorite, removeFavorite } from "../../actions"
 import { fetchMovies, postFetch, deleteFetch } from '../../api'
 
 
-class MovieInfo extends Component {
+export class MovieInfo extends Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -57,6 +57,7 @@ class MovieInfo extends Component {
     }
 
     render = () => {
+      console.log(this.props);
         const { id, title, overview, backdrop_path, poster_path, vote_average, release_date, videos } = this.state.currentMovie;
         const score = vote_average * 10
         const backgroundCover = { backgroundImage:`url(http://image.tmdb.org/t/p/original${backdrop_path})`};
