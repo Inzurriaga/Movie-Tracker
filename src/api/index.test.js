@@ -18,6 +18,7 @@ const mockData = [
   ]
 
 describe("api", async () => {
+
     it("should take expected url", () => {
         const mockUrl = "http://www.Movies.com/movie?";
         const mockUrlEnd = "&get_upcoming"
@@ -30,6 +31,7 @@ describe("api", async () => {
         fetchMovies(mockUrl, mockUrlEnd)
         expect(fetch).toHaveBeenCalledWith(mockFinalUrl)
     })
+
     it("should return an array when fetchMovies is invoke", async () => {
         const mockUrl = "http://www.Movies.com/movie?";
         const mockUrlEnd = "&get_upcoming"
@@ -42,6 +44,7 @@ describe("api", async () => {
         const results = await fetchMovies(mockUrl, mockUrlEnd)
         expect(results).toEqual(mockData)
     })
+
     it("should return a object from settings", () => {
         const mockMethod= "POST";
         const mockBody = {name: "batman", id: 123}
@@ -53,6 +56,7 @@ describe("api", async () => {
         const response = settings(mockMethod, mockBody)
         expect(response).toEqual(result)
     })
+
     it("should return a object from deletesetting", () => {
       const result = {
         method: 'DELETE',
@@ -61,6 +65,7 @@ describe("api", async () => {
       const response = deleteSettings()
       expect(response).toEqual(result)
     })
+
     it("postFetch should take expected url", async () => {
       const mockUrl = "users"
       const mockMethod = "POST"
@@ -75,6 +80,7 @@ describe("api", async () => {
       const resultOption = {"body": "{\"password\":\"password\",\"email\":\"gabe@gabe.com\"}", "headers": {"Content-Type": "application/json"}, "method": "POST"}
       expect(fetch).toHaveBeenCalledWith( resulturl, resultOption)
     })
+
     it("should return the user object if the fetch is resolved", async () => {
       const mockUrl = "users"
       const mockMethod = "POST"
@@ -89,4 +95,66 @@ describe("api", async () => {
       const response = await postFetch(mockUrl, mockMethod, mockBody)
       expect(response).toEqual(expected)
     })
+
+    it('should for getFetch take in the necessary url', async () => {
+      const mockUrl = 'users/4/favorites';
+
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        ok: true,
+        status: 200,
+        json: () => Promise.resolve()
+      }))
+      const expectedUrl = "http://localhost:3000/api/users/4/favorites"
+
+      getFetch(mockUrl)
+      expect(fetch).toHaveBeenCalledWith(expectedUrl)
+    })
+
+    it('should for getFetch return the favorites object if the fetch is resolved', async () => {
+
+      const mockBody = { data: [{ id: 123, title: "Batman", user_id: 85 },{ id: 343, title: "Batman 2", user_id: 67 }]}
+      const expectedBody = [{ id: 123, title: "Batman", user_id: 85 },{ id: 343, title: "Batman 2", user_id: 67 }]
+      const mockUrl = 'users/4/favorites';
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        ok: true,
+        status: 200,
+        json: () => Promise.resolve(mockBody)
+      }))
+
+      const response = await getFetch(mockUrl)
+      expect(response).toEqual(expectedBody)
+    })
+    
+    it('should for deleteFetch take in the necessary url', () => {
+      const mockUrl = 'users/4/favorites/94832';
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        ok: true,
+        status: 200,
+        json: () => Promise.resolve()
+      }))
+      const expectedUrl = "http://localhost:3000/api/users/4/favorites/94832";
+      const expectedBody = {"headers": {"Content-Type": "application/json"}, "method": "DELETE"}
+
+      deleteFetch(mockUrl)
+      expect(fetch).toHaveBeenCalledWith(expectedUrl, expectedBody)
+    })
+
+
+    it('should for deleteFetch delete the favorites if the fetch is resolved', async () => {
+
+      const expectedResponse = {status: 'success'}
+      const mockUrl = 'users/4/favorites/94832';
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        ok: true,
+        status: 200,
+        json: () => Promise.resolve(expectedResponse)
+      }))
+      const response = await deleteFetch(mockUrl)
+      expect(response).toEqual(expectedResponse)
+    })
+
+
+
+
+
 })
