@@ -3,6 +3,7 @@ import SignIn from "../SignIn/SignIn";
 import { Link, NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signOutUser, signOutFavorites } from '../../actions';
+import PropTypes from 'prop-types';
 
 export class Header extends Component {
   constructor(props) {
@@ -25,7 +26,6 @@ export class Header extends Component {
     this.props.signOutFavorites();
   }
 
-  // need utilities file for multiple methods
   isEmpty = (obj) => {
     for(var key in obj) {
         if(obj.hasOwnProperty(key))
@@ -71,6 +71,13 @@ export class Header extends Component {
   }
 }
 
+Header.propTypes = {
+  	user: PropTypes.object.isRequired,
+  	favorites: PropTypes.array.isRequired,
+    signOutUser: PropTypes.func.isRequired,
+    signOutFavorites: PropTypes.func.isRequired,
+}
+
 export const mapStateToProps = (state) => ({
   user: state.user,
   favorites: state.favorites,
@@ -80,6 +87,5 @@ export const mapDispatchToProps = (dispatch) => ({
   signOutUser: (signOut) => dispatch(signOutUser(signOut)),
   signOutFavorites: (favorites) => dispatch(signOutFavorites(favorites))
 })
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
