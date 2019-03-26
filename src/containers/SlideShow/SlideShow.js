@@ -3,7 +3,7 @@ import { ReactComponent as Arrow } from "../../images/arrow.svg"
 import { Link } from "react-router-dom"
 import { connect } from "react-redux"
 
-class SlideShow extends Component{
+export class SlideShow extends Component{
     constructor(){
         super();
         this.state = {

@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SlideShow SlideShow should match snap shot 1`] = `
+<div
+  className="slideshow-section"
+>
+  <div
+    className="slide-container"
+  >
+    <Link
+      className="slide"
+      to="/movies/undefined"
+    >
+      <div
+        className="slide-image"
+        style={
+          Object {
+            "backgroundImage": "url( http://image.tmdb.org/t/p/originalundefined)",
+          }
+        }
+      >
+        <h3 />
+      </div>
+    </Link>
+    <ForwardRef
+      className="arrow-one"
+      onClick={[Function]}
+    />
+    <ForwardRef
+      className="arrow-two"
+      onClick={[Function]}
+    />
+  </div>
+</div>
+`;

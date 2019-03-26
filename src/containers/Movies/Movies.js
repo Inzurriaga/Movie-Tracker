@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { fetchMovies } from '../../api'
 
-
 export class Movies extends Component {
   constructor() {
     super();

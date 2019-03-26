@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainPage MainPage should match snap shot 1`] = `
+<div
+  className="MainPage"
+>
+  <div
+    className="left-option"
+  >
+    <Connect(SlideShow) />
+    <div
+      className="bottom-option"
+    >
+      <Link
+        className="theater-box"
+        to="/InTheater"
+      >
+        Movies in theater
+      </Link>
+      <Link
+        className="theater-box"
+        to="/upcoming"
+      >
+        Coming out Soon
+      </Link>
+    </div>
+  </div>
+  <div
+    className="right-option"
+  >
+    <Connect(GenreBox) />
+  </div>
+</div>
+`;
