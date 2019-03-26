@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movies Movies should match snap shot 1`] = `
+<div
+  className="All-Movies"
+>
+  <h2
+    className="All-Movies-Title"
+  />
+  <div
+    className="All-Movies-Display"
+  />
+</div>
+`;
