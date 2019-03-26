@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from "react-router-dom"
 import { connect } from "react-redux"
+import PropTypes from 'prop-types';
 import { getDiscover, getGenres } from '../../actions';
 import { fetchMovies } from "../../api/index";
 import MainPage from '../MainPage/MainPage'
@@ -82,6 +83,13 @@ export class App extends Component {
       </div>
     );
   }
+}
+
+App.propTypes = {
+  movies: PropTypes.array.isRequired,
+  genres: PropTypes.array.isRequired,
+  getDiscover: PropTypes.func.isRequired,
+  getGenres: PropTypes.func.isRequired
 }
 
 export const mapStateToProps = (state) => ({
