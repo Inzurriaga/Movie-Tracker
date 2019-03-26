@@ -1,4 +1,4 @@
-export const getGenres = (state = [], action) => {
+export const genresReducer = (state = [], action) => {
     switch(action.type) {
         case 'GET_GENRES':
             return action.genre
