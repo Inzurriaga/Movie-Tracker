@@ -12,15 +12,19 @@ export class SignIn extends Component {
       email: '',
       password: '',
       newUser: true,
+      error: '',
     }
   }
 
   handleLogin = async (url, method, body) => {
     try {
       const response = await postFetch(url, method, body);
-      this.props.user(response);
+      if(response.status === 'success'){
+        this.props.user(response);
+      }
     } catch (error) {
-      console.log(error.message);
+      console.log('in error sate');
+      // this.setState({ error: 'not WOrking' })
     }
   }
 
