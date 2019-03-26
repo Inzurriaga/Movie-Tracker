@@ -5,7 +5,7 @@ import SlideShow from "../SlideShow/SlideShow";
 import GenreBox from "../GenreBox/GenreBox"
 
 
-class MainPage extends Component {
+export class MainPage extends Component {
   render() {
     const { movies } = this.props;
     return (

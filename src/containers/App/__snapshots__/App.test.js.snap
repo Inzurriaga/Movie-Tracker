@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`app app should have a snap shot 1`] = `
+<div
+  className="App"
+>
+  <Connect(Header) />
+  <Switch>
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/"
+    />
+    <Route
+      exact={true}
+      path="/movies/:title/:id"
+      render={[Function]}
+    />
+    <Route
+      exact={true}
+      path="/movies/allMovies"
+      render={[Function]}
+    />
+    <Route
+      exact={true}
+      path="/favorites"
+      render={[Function]}
+    />
+    <Route
+      exact={true}
+      path="/InTheater"
+      render={[Function]}
+    />
+    <Route
+      exact={true}
+      path="/upcoming"
+      render={[Function]}
+    />
+    <Route
+      exact={true}
+      path="/movies/:id"
+      render={[Function]}
+    />
+  </Switch>
+</div>
+`;

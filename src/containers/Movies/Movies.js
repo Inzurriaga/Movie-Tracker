@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { fetchMovies } from '../../api'
-import GenreMovie from '../GenreMovie/GenreMovie';
 import Masonry from 'react-masonry-component';
 
 
@@ -125,7 +124,7 @@ export class Movies extends Component {
       console.log(this.props);
       if(!(this.props.id === "allMovies")) {
         moviesToRender = moviesToSave.map(movie => {
-            let backgroundImage = {backgroundImage: `url( http://image.tmdb.org/t/p/w1200${movie.backdrop_path})`}
+            let backgroundImage = {backgroundImage: `url( http://image.tmdb.org/t/p/w1280${movie.backdrop_path})`}
             return (
                 <Link className="genre-container" key={movie.id} to={`/movies/${movie.id}`}>
                   <div className="genre-image" style={backgroundImage}>

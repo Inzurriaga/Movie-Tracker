@@ -1,6 +1,6 @@
 import React, { Component} from 'react';
 import SignIn from "../SignIn/SignIn";
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signOutUser, signOutFavorites } from '../../actions';
 
@@ -42,7 +42,9 @@ class Header extends Component {
         <nav className="Header-Nav">
           <Link key="Home" to="/"><h2>Home</h2></Link>
           <Link key="All_Movies" to="/movies/allMovies"><h2>All Genres</h2></Link>
-          <Link key="Favorites" to="/favorites"><h2>Favorites</h2></Link>
+          {
+            this.isEmpty(this.props.user) && <Link key="Favorites" to="/favorites"><h2>Favorites</h2></Link>
+          }
         </nav>
         <section className="LoginBtn">
         { !this.isEmpty(this.props.user) &&
@@ -56,9 +58,9 @@ class Header extends Component {
         { this.isEmpty(this.props.user) &&
           <div className="User-Info-Box">
             <h4 className="User-Info">Welcome {this.props.user.name}</h4>
-            <button type="button" onClick={this.signOut}>
+            <NavLink to="/" type="button" onClick={this.signOut}>
               <i className="fas fa-sign-out-alt"></i>
-            </button>
+            </NavLink>
           </div>
         }
         </section>

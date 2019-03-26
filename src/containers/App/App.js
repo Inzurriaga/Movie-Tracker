@@ -6,7 +6,6 @@ import { fetchMovies } from "../../api/index";
 import MainPage from '../MainPage/MainPage'
 import MovieInfo from "../MovieInfo/MovieInfo"
 import Header from '../../containers/Header/Header'
-import Footer from '../../components/Footer/Footer'
 import Movies from "../Movies/Movies"
 
 export class App extends Component {
@@ -19,14 +18,15 @@ export class App extends Component {
         "&with_genres=27",
         "&with_genres=35"
       ],
-      urlMovies: "https:api.themoviedb.org/3/discover/movie?"
+      urlMovies: "https:api.themoviedb.org/3/discover/movie?",
+      error: ""
     }
   }
 
   componentDidMount = async () => {
     const { moviesCat, urlMovies } = this.state;
     try {
-      const unresolvedAllMovies = moviesCat.map( async (movie) => {
+        const unresolvedAllMovies = moviesCat.map( async (movie) => {
         const singleCategory = await fetchMovies(urlMovies, movie)
         return singleCategory
       })
@@ -34,7 +34,8 @@ export class App extends Component {
       this.props.getDiscover(allMovies[0].results)
       this.setGenres(allMovies)
     } catch(error) {
-      console.log(error.message)
+      this.setState({
+        error: error.results.message})
     }
   }
 
