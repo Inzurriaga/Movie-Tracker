@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { user, initialFavorites } from '../../actions'
-import { postFetch, getFetch } from '../../api'
+import { connect } from 'react-redux';
+import { user, initialFavorites } from '../../actions';
+import { postFetch, getFetch } from '../../api';
+import PropTypes from 'prop-types';
 
 
 export class SignIn extends Component {
@@ -12,7 +13,7 @@ export class SignIn extends Component {
       email: '',
       password: '',
       newUser: true,
-      error: ""
+      error: '',
     }
   }
 
@@ -111,6 +112,18 @@ export class SignIn extends Component {
     )
   }
 }
+
+
+SignIn.propTypes = {
+  className: PropTypes.string.isRequired,
+  hideModal: PropTypes.func.isRequired,
+  initialFavorites: PropTypes.func.isRequired,
+  show: PropTypes.bool.isRequired,
+  user: PropTypes.func.isRequired,
+  userInfo: PropTypes.object.isRequired
+}
+
+
 
 export const mapStateToProps = (state) => ({
   userInfo: state.user,

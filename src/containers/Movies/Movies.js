@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
-import { fetchMovies } from '../../api'
+import { fetchMovies } from '../../api';
+import PropTypes from 'prop-types';
+
 
 export class Movies extends Component {
   constructor() {
@@ -171,6 +173,12 @@ export class Movies extends Component {
       }
 
   }
+}
+
+Movies.propTypes = {
+  	favorites: PropTypes.array.isRequired,
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
 }
 
 export const mapStateToProps = (state) => ({

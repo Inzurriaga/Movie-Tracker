@@ -1,6 +1,7 @@
-import React, { Component } from "react"
-import { Link } from "react-router-dom"
-import { connect } from "react-redux"
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from 'prop-types';
 
 
 export class GenreBox extends Component {
@@ -24,6 +25,11 @@ export class GenreBox extends Component {
             </div>)
     }
 }
+
+GenreBox.propTypes = {
+  	genres: PropTypes.array.isRequired
+}
+
 
 export const mapStateToProps = (state) => ({
     genres: state.genres
