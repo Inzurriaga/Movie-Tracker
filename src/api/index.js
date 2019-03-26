@@ -30,19 +30,24 @@ const postFetch = async (url, method, body) => {
 
 const getFetch = async (url) => {
   const response = await fetch(`${backEndUrl}${url}`)
-  const user = await response.json()
-  return user.data;
+  if(!response.ok) {
+    return 'User Already Exists'
+    // throw Error(response.statusText)
+  } else {
+    const user = await response.json()
+    return user.data;
+  }
+    // if(response.status === 'success') {}
 }
 
 const deleteFetch = async (url) => {
   const response = await fetch(`${backEndUrl}${url}`, deleteSettings())
-  console.log(response);
   const retrievedData = await response.json()
-  console.log(retrievedData);
+  return retrievedData
 }
 
 
 
 
 
-export { fetchMovies, postFetch, getFetch, deleteFetch }
+export { fetchMovies, postFetch, getFetch, deleteFetch, settings, deleteSettings }

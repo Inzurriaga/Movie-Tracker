@@ -13,12 +13,22 @@ exports[`MainPage MainPage should match snap shot 1`] = `
     >
       <Link
         className="theater-box"
+        style={
+          Object {
+            "backgroundImage": "url(theather.jpg)",
+          }
+        }
         to="/InTheater"
       >
         Movies in theater
       </Link>
       <Link
         className="theater-box"
+        style={
+          Object {
+            "backgroundImage": "url(comingSoon.jpg)",
+          }
+        }
         to="/upcoming"
       >
         Coming out Soon

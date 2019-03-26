@@ -1,12 +1,13 @@
 import React, { Component } from "react"
 import { connect } from 'react-redux'
+import PropTypes from "prop-types"
 import { addFavorite, removeFavorite } from "../../actions"
 import { fetchMovies, postFetch, deleteFetch } from '../../api'
 
 
 export class MovieInfo extends Component {
-    constructor(props) {
-      super(props);
+    constructor() {
+      super();
       this.state = {
         currentMovie: [],
         favoriteStatus: false,
@@ -57,7 +58,6 @@ export class MovieInfo extends Component {
     }
 
     render = () => {
-      console.log(this.props);
         const { id, title, overview, backdrop_path, poster_path, vote_average, release_date, videos } = this.state.currentMovie;
         const score = vote_average * 10
         const backgroundCover = { backgroundImage:`url(http://image.tmdb.org/t/p/original${backdrop_path})`};
@@ -94,6 +94,14 @@ export class MovieInfo extends Component {
           )
         }
     }
+}
+
+MovieInfo.propTypes = {
+  user: PropTypes.object,
+  favorites: PropTypes.array.isRequired,
+  movieID: PropTypes.string.isRequired,
+  addFavorite: PropTypes.func,
+  removeFavorite: PropTypes.func
 }
 
 export const mapStateToProps = (state) => ({

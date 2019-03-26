@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom"
+import PropTypes from "prop-types"
 import SlideShow from "../SlideShow/SlideShow";
 import GenreBox from "../GenreBox/GenreBox"
 import inTheaters from'../../images/theather.jpg';
@@ -30,6 +31,10 @@ export class MainPage extends Component {
       </div>
     );
   }
+}
+
+MainPage.propTypes = {
+  movies: PropTypes.array.isRequired,
 }
 
 export const mapStateToProps = (state) => ({

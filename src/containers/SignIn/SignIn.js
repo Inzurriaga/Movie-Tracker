@@ -13,15 +13,19 @@ export class SignIn extends Component {
       email: '',
       password: '',
       newUser: true,
+      error: '',
     }
   }
 
   handleLogin = async (url, method, body) => {
     try {
       const response = await postFetch(url, method, body);
-      this.props.user(response);
+      if(response.status === 'success'){
+        this.props.user(response);
+      }
     } catch (error) {
-      console.log(error.message);
+      console.log('in error sate');
+      // this.setState({ error: 'not WOrking' })
     }
   }
 
@@ -51,7 +55,6 @@ export class SignIn extends Component {
   userInput = (event) => {
     const value = event.target.value
     const key = event.target.classList
-    console.log(key);
     this.setState({
       [key]: value
     })
@@ -65,7 +68,6 @@ export class SignIn extends Component {
 
 
   render(){
-    console.log('SignIn', this.props);
     const btnActive = 'btnChoice choice-active';
     const btnInactive = 'btnChoice choice-inactive';
     const { newUser } = this.state;

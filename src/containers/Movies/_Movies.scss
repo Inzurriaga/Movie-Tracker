@@ -172,9 +172,8 @@
 
         &::after {
           content: '';
-          position: absolute;
-          right: 0px;
-          top: 20px;
+          position: fixed;
+          right: 2em;
           height: 170px;
           width: 50px;
           background: linear-gradient(to left, #231f20 0%, rgba(125, 185, 232, 0) 100%);
