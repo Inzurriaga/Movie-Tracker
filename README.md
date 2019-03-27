@@ -8,8 +8,10 @@ This application also has the ability to save and create user accounts. The favo
 
 ## Preview:
 
-![]()
-![]()
+<img src="./ReadMeImage/one.png" alt="alt text" width="whatever" height="whatever">
+<img src="./ReadMeImage/two.png" alt="alt text" width="whatever" height="whatever">
+<img src="./ReadMeImage/three.png" alt="alt text" width="whatever" height="whatever">
+<img src="./ReadMeImage/four.png" alt="alt text" width="whatever" height="whatever">
 
 
 ## Getting Started:
@@ -38,7 +40,7 @@ CSS\
 React\
 Sass\
 React-Router\
-Redux\
+Redux
 
 ## Future Development and Extensions Notes:
 
@@ -49,5 +51,5 @@ Future Development and Extensions would include hover activation states that sho
 [Movie Tracker, Mod 3 at the Turing School of Software and Design](https://github.com/turingschool-examples/movie-tracker)
 
 ## Contributors
-Gabriel Inzurriaga: https://github.com/Inzurriaga
+Gabriel Inzurriaga: https://github.com/Inzurriaga \
 Michael Krog: https://github.com/MRKrog
