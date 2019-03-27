@@ -84,15 +84,14 @@ describe("api", async () => {
     it("should return the user object if the fetch is resolved", async () => {
       const mockUrl = "users"
       const mockMethod = "POST"
-      const mockbody = {data: {id: 7, name: "a", password: "a", email: "a"}}
-      const mockBody = {password: "password", email: "gabe@gabe.com" }
+      const mockbody = {id: 7, name: "a", password: "a", email: "a"}
       window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
         ok: true,
         status: 200,
         json: () => Promise.resolve(mockbody)
       }))
       const expected = {id: 7, name: "a", password: "a", email: "a"}
-      const response = await postFetch(mockUrl, mockMethod, mockBody)
+      const response = await postFetch(mockUrl, mockMethod)
       expect(response).toEqual(expected)
     })
 

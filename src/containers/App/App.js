@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from "react-router-dom"
+import { Route, Switch, Redirect } from "react-router-dom"
 import { connect } from "react-redux"
 import PropTypes from 'prop-types';
 import { getDiscover, getGenres } from '../../actions';
@@ -46,6 +46,14 @@ export class App extends Component {
     console.log(this.props.genres);
   }
 
+  isEmpty = (obj) => {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return true;
+    }
+    return false;
+  }
+
   render() {
     return (
       <div className="App">
@@ -64,7 +72,11 @@ export class App extends Component {
             return <Movies key="allMovies" title="All Movies" id="allMovies" />
           }} />
           <Route exact path="/favorites" render={() => {
-            return <Movies key="favorites" title="Favorites" id="favorites" />
+            if(this.isEmpty(this.props.user)){
+              return <Movies key="favorites" title="Favorites" id="favorites" />
+            }else{
+              return <Redirect to="/" />
+            }
           }} />
           <Route exact path="/InTheater" render={() => {
             return <Movies key="favorites" id="inTheater" />
@@ -94,7 +106,8 @@ App.propTypes = {
 
 export const mapStateToProps = (state) => ({
   movies: state.movies,
-  genres: state.genres
+  genres: state.genres,
+  user: state.user
 })
 
 export const mapDispatchToProps = (dispatch) => ({
