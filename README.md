@@ -28,13 +28,13 @@ $ npm start
 ```
 
 ## Project Tools:
-HTMl < br />
-Javascript < br />
-CSS < br />
-React < br />
-Sass < br />
-React-Router  < br />
-Redux
+HTMl\
+Javascript\
+CSS\
+React\
+Sass\
+React-Router\
+Redux\
 
 ## Future Development and Extensions Notes:
  < br />
