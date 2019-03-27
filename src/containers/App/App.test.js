@@ -12,6 +12,7 @@ const mockUrl = "https:api.themoviedb.org/3/discover/movie?"
 describe('app', () => {
     describe("app", () => {
         let wrapper;
+
         beforeEach(() => {
             wrapper = shallow(
                 <App genres={mockGenres}
@@ -19,9 +20,11 @@ describe('app', () => {
                      />
             )
         })
+
         it("should have a snap shot", () => {
             expect(wrapper).toMatchSnapshot()
         });
+
         it("should have a default state", () => {
             expect(wrapper.state()).toEqual({
                 moviesCat: [
@@ -34,17 +37,20 @@ describe('app', () => {
                 error: ""
               })
         });
+
         it("should invoke the fetch call on component did mount", () => {
 
         });
+
         it("fetch call takes expoect url", () => {
             wrapper.instance().componentDidMount()
             expect(fetchMovies).toHaveBeenCalledWith(mockUrl, "&with_genres=28")
         })
 
-
     })
+
     describe("mapStateToProps", () => {
+
         it("should return a object", () => {
             const mockData = {
                 movies: [],
@@ -58,8 +64,11 @@ describe('app', () => {
             const mockprops = mapStateToProps(mockData)
             expect(mockprops).toEqual(expected)
         })
+
     })
+
     describe("mapDispatchToProps", () => {
+
         it("should call dispach for getDiscover", () => {
             const mockDispatch = jest.fn()
             const actionToDispatch = getDiscover(mockMovies)
@@ -67,6 +76,7 @@ describe('app', () => {
             mappedProps.getDiscover(mockMovies)
             expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
         });
+
         it("should call dispach for getGenres", () => {
             const mockDispatch = jest.fn()
             const actionToDispatch = getGenres(mockMovies)
@@ -74,5 +84,6 @@ describe('app', () => {
             mappedProps.getGenres(mockMovies)
             expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
         })
+        
     })
 });

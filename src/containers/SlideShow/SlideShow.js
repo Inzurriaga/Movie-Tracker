@@ -26,11 +26,11 @@ export class SlideShow extends Component{
         const { slidesPosition, slides } = this.state
         const autoSlides = setInterval(this.changeSlidesPositionForward, 6000)
         let position = slidesPosition
-        if(position < slides.length - 1){
+        if(position < slides.length - 1) {
             position++
             clearInterval(this.state.autoSlides)
             this.setState({ slidesPosition: position, autoSlides })
-        }else{
+        } else{
             clearInterval(this.state.autoSlides)
             this.setState({ slidesPosition: 0, autoSlides})
         }

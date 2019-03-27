@@ -21,13 +21,11 @@ export class SignIn extends Component {
     try {
       const response = await postFetch(url, method, body);
       if(typeof response.error !== "string"){
-        console.log("if im working", response)
         return response;
       }else {
         this.setState({error: "not working"})
       }
     } catch (error) {
-      console.log("im not working in the hanlde")
       this.setState({
         error: "not working"
       })
@@ -35,7 +33,6 @@ export class SignIn extends Component {
   }
 
   signIn = async (event) => {
-    console.log("sign in")
     event.preventDefault();
     this.setState({error: ''})
     const { password, email } = this.state
@@ -49,7 +46,6 @@ export class SignIn extends Component {
   }
 
   fetchUserFavorite = async (id) => {
-    console.log("id", id)
     const url = `users/${id}/favorites`
     const response = await getFetch(url)
     this.props.initialFavorites(response)
@@ -105,7 +101,7 @@ export class SignIn extends Component {
               <label>Password</label>
               <input onChange={this.userInput} type="text" className="password"/>
               { this.state.error === "not working" &&
-              <p>Email has already been used</p>
+              <p className="errorMessage">Email has already been used</p>
               }
               <button type="submit">Create Account</button>
             </form>
@@ -116,7 +112,7 @@ export class SignIn extends Component {
             <label>Password</label>
             <input onChange={this.userInput} type="text" className="password"/>
             { this.state.error === "not working" &&
-              <p>Email and Password do not match</p>
+              <p className="errorMessage">Email and Password do not match</p>
             }
             <button type="submit">Sign In</button>
           </form>

@@ -56,7 +56,6 @@ export class Movies extends Component {
       this.setState({
         movieGenreTitles: resolvedTitles
       })
-      console.log(this.state);
     } catch (error) {
       console.log(error.message);
     }

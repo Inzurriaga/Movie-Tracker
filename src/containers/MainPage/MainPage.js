@@ -8,6 +8,7 @@ import inTheaters from'../../images/theather.jpg';
 import comingSoon from'../../images/comingSoon.jpg';
 
 export class MainPage extends Component {
+
   render() {
     const { movies } = this.props;
     const theater={backgroundImage: `url(${inTheaters})`}
@@ -18,7 +19,7 @@ export class MainPage extends Component {
           {
             movies.length ?
             <SlideShow /> :
-            <div>im loading</div>
+            <div>Loading</div>
           }
           <div className="bottom-option">
             <Link to="/InTheater" style={theater} className="theater-box">Movies in theater</Link>
