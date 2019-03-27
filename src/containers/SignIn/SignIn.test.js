@@ -25,6 +25,7 @@ describe('Sign In', () => {
         email: '',
         password: '',
         newUser: true,
+        error: ''
       });
     })
 

@@ -20,10 +20,11 @@ export class SignIn extends Component {
   handleLogin = async (url, method, body) => {
     try {
       const response = await postFetch(url, method, body);
-      const retrievedData = await response.json()
-      if(response.ok){
-        console.log("if im working", retrievedData)
-        return retrievedData;
+      if(typeof response.error !== "string"){
+        console.log("if im working", response)
+        return response;
+      }else {
+        this.setState({error: "not working"})
       }
     } catch (error) {
       console.log("im not working in the hanlde")
