@@ -48,7 +48,6 @@ export class MovieInfo extends Component {
       this.props.removeFavorite(id);
     }
 
-    // need utilities file for multiple methods
     isEmpty = (obj) => {
       for(var key in obj) {
           if(obj.hasOwnProperty(key))

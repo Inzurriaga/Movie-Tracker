@@ -2,14 +2,14 @@
   width: 100%;
   position: relative;
   box-sizing: border-box;
-  overflow-x: hidden;
+  // overflow-x: hidden;
 
   .Genre-Movies-Title {
     position: absolute;
-    font-size: 9em;
-    top: 15%;
+    font-size: 7em;
+    top: 2.5em;
     line-height: 0;
-    left: 73.5%;
+    right: -.85em;
     text-transform: uppercase;
     color: #7b7b7b;
      mix-blend-mode: difference;
@@ -72,7 +72,7 @@
         }
 
         &:after {
-          content: "";
+          // content: "";
           position: absolute;
           box-sizing: border-box;
           left: -15px;

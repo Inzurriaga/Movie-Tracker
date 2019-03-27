@@ -3,13 +3,14 @@ import { MovieInfo, mapStateToProps, mapDispatchToProps } from './MovieInfo';
 import { addFavorite, removeFavorite } from "../../actions/index"
 import { shallow } from 'enzyme';
 
-const mockFavorite = [123,1234,2341,1235]
+const mockFavorite = [123,1234,2341,1235];
+const mockUser = {}
 
 describe('MovieInfo', () => {
   describe('MovieInfo Component', () => {
     let movieInfoCompenent;
     beforeEach(() => {
-      movieInfoCompenent = shallow(<MovieInfo favorites={mockFavorite}                                          movieID={123}/>)
+      movieInfoCompenent = shallow(<MovieInfo user={mockUser} favorites={mockFavorite}                                          movieID={123}/>)
     })
 
     it('should match the snapshot', () => {
@@ -21,6 +22,11 @@ describe('MovieInfo', () => {
         currentMovie: [],
         favoriteStatus: false,
       });
+    })
+
+    it('should match the snapshot and show favorite button if user exists', () => {
+
+      expect(movieInfoCompenent).toMatchSnapshot()
     })
 
   })
@@ -62,4 +68,3 @@ describe('MovieInfo', () => {
   })
 
 })
-
