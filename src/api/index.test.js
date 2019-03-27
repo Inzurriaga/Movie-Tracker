@@ -1,7 +1,7 @@
 import React from "react"
 import  { fetchMovies, postFetch, getFetch, deleteFetch, settings, deleteSettings } from "./index"
 
-const mockApiKey = "a98rq3p4oirh98ie43"
+const mockApiKey = "3033b069b2d0b32039c7d85cfe10cfd3"
 const mockData = [
     {
       results: [
@@ -22,7 +22,7 @@ describe("api", async () => {
     it("should take expected url", () => {
         const mockUrl = "http://www.Movies.com/movie?";
         const mockUrlEnd = "&get_upcoming"
-        const mockFinalUrl = "http://www.Movies.com/movie?api_key=ed07b14687da633eafa43d7e054d26d2&get_upcoming"
+        const mockFinalUrl = "http://www.Movies.com/movie?api_key=3033b069b2d0b32039c7d85cfe10cfd3&get_upcoming"
         window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
             ok: true,
             status: 200,
@@ -35,7 +35,7 @@ describe("api", async () => {
     it("should return an array when fetchMovies is invoke", async () => {
         const mockUrl = "http://www.Movies.com/movie?";
         const mockUrlEnd = "&get_upcoming"
-        const mockFinalUrl = "http://www.Movies.com/movie?api_key=ed07b14687da633eafa43d7e054d26d2&get_upcoming"
+        const mockFinalUrl = "http://www.Movies.com/movie?api_key=3033b069b2d0b32039c7d85cfe10cfd3&get_upcoming"
         window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
             ok: true,
             status: 200,
@@ -123,7 +123,7 @@ describe("api", async () => {
       const response = await getFetch(mockUrl)
       expect(response).toEqual(expectedBody)
     })
-    
+
     it('should for deleteFetch take in the necessary url', () => {
       const mockUrl = 'users/4/favorites/94832';
       window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
@@ -151,9 +151,5 @@ describe("api", async () => {
       const response = await deleteFetch(mockUrl)
       expect(response).toEqual(expectedResponse)
     })
-
-
-
-
 
 })

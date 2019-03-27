@@ -104,7 +104,7 @@ export class SignIn extends Component {
               <input onChange={this.userInput} type="text" className="email"/>
               <label>Password</label>
               <input onChange={this.userInput} type="text" className="password"/>
-              { this.state.error === "not working" && 
+              { this.state.error === "not working" &&
               <p>Email has already been used</p>
               }
               <button type="submit">Create Account</button>
@@ -115,7 +115,7 @@ export class SignIn extends Component {
             <input onChange={this.userInput} type="text" className="email"/>
             <label>Password</label>
             <input onChange={this.userInput} type="text" className="password"/>
-            { this.state.error === "not working" && 
+            { this.state.error === "not working" &&
               <p>Email and Password do not match</p>
             }
             <button type="submit">Sign In</button>
@@ -134,7 +134,7 @@ SignIn.propTypes = {
   initialFavorites: PropTypes.func,
   show: PropTypes.bool,
   user: PropTypes.func,
-  userInfo: PropTypes.object
+  userInfo: PropTypes.object,
 }
 
 

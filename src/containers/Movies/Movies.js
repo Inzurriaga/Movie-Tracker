@@ -176,9 +176,9 @@ export class Movies extends Component {
 }
 
 Movies.propTypes = {
-  	favorites: PropTypes.array.isRequired,
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
+  	favorites: PropTypes.array,
+    id: PropTypes.string,
+    title: PropTypes.string,
 }
 
 export const mapStateToProps = (state) => ({
