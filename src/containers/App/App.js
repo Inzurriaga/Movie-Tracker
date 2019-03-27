@@ -33,7 +33,6 @@ export class App extends Component {
       })
       const allMovies = await Promise.all(unresolvedAllMovies)
       this.props.getDiscover(allMovies[0].results)
-      console.log(allMovies);
       this.setGenres(allMovies)
     } catch(error) {
       this.setState({
@@ -56,7 +55,6 @@ export class App extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="App">
         <Header />
