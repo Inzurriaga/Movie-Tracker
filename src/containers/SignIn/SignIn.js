@@ -21,8 +21,12 @@ export class SignIn extends Component {
     try {
       const response = await postFetch(url, method, body);
       const retrievedData = await response.json()
-      this.props.user(retrievedData.data);
+      if(response.ok){
+        console.log("if im working", retrievedData)
+        return retrievedData;
+      }
     } catch (error) {
+      console.log("im not working in the hanlde")
       this.setState({
         error: "not working"
       })
@@ -30,26 +34,36 @@ export class SignIn extends Component {
   }
 
   signIn = async (event) => {
+    console.log("sign in")
     event.preventDefault();
+    this.setState({error: ''})
     const { password, email } = this.state
     const url = 'users'
-    await this.handleLogin(url, 'POST', { password, email })
-    await this.fetchUserFavorite(this.props.userInfo.id);
-    this.props.hideModal()
+    const retrievedData = await this.handleLogin(url, 'POST', { password, email })
+    if(this.state.error !== "not working" ) {
+      this.props.user(retrievedData.data);
+      await this.fetchUserFavorite(this.props.userInfo.id);
+      this.props.hideModal()
+    }
   }
 
   fetchUserFavorite = async (id) => {
+    console.log("id", id)
     const url = `users/${id}/favorites`
     const response = await getFetch(url)
     this.props.initialFavorites(response)
   }
 
-  createAccount = (event) => {
+  createAccount = async (event) => {
     event.preventDefault();
     const { name, password, email } = this.state
     const url = 'users/new'
-    this.handleLogin(url, 'POST', { name, password, email })
-    this.signIn(event)
+    this.setState({error: ''})
+    await this.handleLogin(url, 'POST', { name, password, email })
+    if(this.state.error !== "not working" ) {
+      console.log("create")
+      this.signIn(event)
+    }
   }
 
   userInput = (event) => {
