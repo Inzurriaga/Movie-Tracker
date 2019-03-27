@@ -62,7 +62,6 @@ export class SignIn extends Component {
     this.setState({error: ''})
     await this.handleLogin(url, 'POST', { name, password, email })
     if(this.state.error !== "not working" ) {
-      console.log("create")
       this.signIn(event)
     }
   }

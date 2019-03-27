@@ -1,7 +1,7 @@
 import React from 'react';
 import { SignIn, mapStateToProps, mapDispatchToProps } from './SignIn';
 import { user, initialFavorites } from "../../actions/index"
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 
 let show = false;
 let mockHideModal = jest.fn()
@@ -82,15 +82,11 @@ describe('Sign In', () => {
     })
 
     it('should change invoke the function create account when user submits', () => {
-      signInComponent.setState({newUser: false})
-
-
+      expect(signInComponent.state("error")).toEqual("")
+      signInComponent.instance().createAccount()
+      expect(signInComponent.state("error")).toEqual("")
     })
-
-
-
   })
-
 
   describe('SignIn mapStateToProps', () => {
 

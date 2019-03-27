@@ -1,6 +1,8 @@
 import React from "react"
 import { shallow } from "enzyme"
 import { mapStateToProps, Movies } from "./Movies"
+import { fetchMovies } from '../../api';
+jest.mock("../../api")
 
 describe("Movies", () => {
     describe("Movies", () => {
@@ -31,6 +33,9 @@ describe("Movies", () => {
             const mockdata = [{genre: "horror"}, {genre: "action"}]
             wrapper.instance().setAllGenres(mockdata)
             expect(wrapper.state("moviesToSave")).toEqual(mockdata)
+        });
+        it("should change the state of moviesToSave when fetchInTheater is invoke", () => {
+            
         })
     })
     describe("mapStateToProps", () => {
