@@ -62,7 +62,7 @@ export class MovieInfo extends Component {
         const backgroundCover = { backgroundImage:`url(http://image.tmdb.org/t/p/original${backdrop_path})`};
         let favoriteStatus = this.props.favorites.includes(id) ? 'Favorite_True' : 'Favorite_False';
         if(typeof id === 'number') {
-          const videoKey = videos.results.length === 0  ? null : videos.results[0].key
+          const videoKey = videos.results.length === 0 ? null : videos.results[0].key
           return(
             <div className="MovieInfo" style={backgroundCover}>
               <section className="MovieInfo-Poster">
@@ -97,8 +97,8 @@ export class MovieInfo extends Component {
 
 MovieInfo.propTypes = {
   user: PropTypes.object,
-  favorites: PropTypes.array.isRequired,
-  movieID: PropTypes.string.isRequired,
+  favorites: PropTypes.array,
+  movieID: PropTypes.string,
   addFavorite: PropTypes.func,
   removeFavorite: PropTypes.func
 }

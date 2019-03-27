@@ -11,11 +11,12 @@ const mockUrl = "https:api.themoviedb.org/3/discover/movie?"
 
 describe('app', () => {
     describe("app", () => {
-        let wrapper; 
+        let wrapper;
         beforeEach(() => {
             wrapper = shallow(
                 <App genres={mockGenres}
-                    movies={mockMovies}/>
+                     movies={mockMovies}
+                     />
             )
         })
         it("should have a snap shot", () => {
@@ -40,6 +41,7 @@ describe('app', () => {
             wrapper.instance().componentDidMount()
             expect(fetchMovies).toHaveBeenCalledWith(mockUrl, "&with_genres=28")
         })
+
 
     })
     describe("mapStateToProps", () => {

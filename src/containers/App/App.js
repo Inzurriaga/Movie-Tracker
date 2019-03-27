@@ -33,17 +33,18 @@ export class App extends Component {
       })
       const allMovies = await Promise.all(unresolvedAllMovies)
       this.props.getDiscover(allMovies[0].results)
+      console.log(allMovies);
       this.setGenres(allMovies)
     } catch(error) {
       this.setState({
-        error: error.results.message})
+        error: error.results.message
+      })
     }
   }
 
   setGenres = (response) => {
     const genres = response.filter((genre, index) => index > 0 )
     this.props.getGenres(genres)
-    console.log(this.props.genres);
   }
 
   isEmpty = (obj) => {
@@ -55,6 +56,7 @@ export class App extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div className="App">
         <Header />

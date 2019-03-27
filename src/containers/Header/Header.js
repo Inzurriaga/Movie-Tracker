@@ -73,7 +73,7 @@ export class Header extends Component {
 
 Header.propTypes = {
   	user: PropTypes.object.isRequired,
-  	favorites: PropTypes.array.isRequired,
+  	favorites: PropTypes.array,
     signOutUser: PropTypes.func.isRequired,
     signOutFavorites: PropTypes.func.isRequired,
 }
