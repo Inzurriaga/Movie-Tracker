@@ -62,7 +62,6 @@ export class SignIn extends Component {
     this.setState({error: ''})
     await this.handleLogin(url, 'POST', { name, password, email })
     if(this.state.error !== "not working" ) {
-      console.log("create")
       this.signIn(event)
     }
   }
@@ -130,12 +129,12 @@ export class SignIn extends Component {
 
 
 SignIn.propTypes = {
-  className: PropTypes.string.isRequired,
-  hideModal: PropTypes.func.isRequired,
-  initialFavorites: PropTypes.func.isRequired,
-  show: PropTypes.bool.isRequired,
-  user: PropTypes.func.isRequired,
-  userInfo: PropTypes.object.isRequired
+  className: PropTypes.string,
+  hideModal: PropTypes.func,
+  initialFavorites: PropTypes.func,
+  show: PropTypes.bool,
+  user: PropTypes.func,
+  userInfo: PropTypes.object
 }
 
 
